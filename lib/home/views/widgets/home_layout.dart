@@ -17,7 +17,6 @@ class HomeLayout extends StatelessWidget {
     return CustomScrollView(
       physics: physics,
       slivers: [
-        const HomeAppBar(),
         ...children,
       ],
     );

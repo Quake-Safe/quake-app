@@ -2,7 +2,44 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+Future<void> bootstrap({
+  required BootstrapBuilder builder,
+  required String environment,
+}) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: '.env.$environment');
+
+  FlutterError.onError = (details) {
+    log(details.exceptionAsString(), stackTrace: details.stack);
+  };
+
+  Bloc.observer = const AppBlocObserver();
+
+  // Add cross-flavor configuration here
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  final supabase = await Supabase.initialize(
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+  );
+
+  runApp(
+    await builder(supabase),
+  );
+}
+
+typedef BootstrapBuilder = FutureOr<Widget> Function(
+  Supabase supabase,
+);
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -18,16 +55,4 @@ class AppBlocObserver extends BlocObserver {
     log('onError(${bloc.runtimeType}, $error, $stackTrace)');
     super.onError(bloc, error, stackTrace);
   }
-}
-
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
-  FlutterError.onError = (details) {
-    log(details.exceptionAsString(), stackTrace: details.stack);
-  };
-
-  Bloc.observer = const AppBlocObserver();
-
-  // Add cross-flavor configuration here
-
-  runApp(await builder());
 }
