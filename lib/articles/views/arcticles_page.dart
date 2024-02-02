@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quake_safe_app/articles/bloc/articles_bloc.dart';
+import 'package:quake_safe_app/articles/views/widgets/articles_story_list.dart';
 import 'package:quake_safe_app/articles/views/widgets/widgets.dart';
 import 'package:quake_safe_app/home/home.dart';
 
@@ -24,39 +25,7 @@ class ArticlesPage extends StatelessWidget implements AutoRouteWrapper {
         },
         child: HomeLayout(
           children: [
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 240.h,
-                width: double.maxFinite,
-                child: ListView.separated(
-                  padding: EdgeInsets.only(
-                    left: 28.sp,
-                    right: 28.sp,
-                    top: 29.sp,
-                    bottom: 14.sp,
-                  ),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, i) {
-                    return Container(
-                      width: 120.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.sp),
-                      ),
-                      height: double.maxFinite,
-                      child: const Text('Sample Story'),
-                    );
-                  },
-                  separatorBuilder: (context, i) {
-                    return SizedBox(
-                      width: 10.sp,
-                    );
-                  },
-                  itemCount: 10,
-                ),
-              ),
-            ),
+            const ArticlesStoryList(),
             BlocBuilder<ArticlesBloc, ArticlesState>(
               builder: (context, state) {
                 return state.maybeMap(

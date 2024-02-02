@@ -17,6 +17,7 @@ dependencies:
   collection: ^1.18.0
   dio: ^5.4.0
   extended_image: ^8.2.0
+  faker: ^2.1.0
   flash: ^3.1.0
   flutter:
     sdk: flutter
