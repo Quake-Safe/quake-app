@@ -13,7 +13,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      extendBody: true,
       routes: const [
         ArticlesRoute(),
         MapRoute(),

@@ -26,7 +26,7 @@ abstract class $AppRouter extends _i8.RootStackRouter {
     ArticlesRoute.name: (routeData) {
       return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.ArticlesPage(),
+        child: _i8.WrappedRoute(child: const _i1.ArticlesPage()),
       );
     },
     HomeRoute.name: (routeData) {

@@ -11,4 +11,7 @@ dev_dependencies:
   test: ^1.19.2
   very_good_analysis: ^5.1.0
 dependencies:
+  dio: ^5.4.0
+  fresh: ^0.4.2
+  fresh_dio: ^0.4.1
   supabase: ^2.0.5

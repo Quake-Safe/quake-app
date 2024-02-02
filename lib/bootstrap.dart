@@ -7,6 +7,38 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+class Config {
+  Config({
+    required this.supabaseUrl,
+    required this.supabaseAnonKey,
+    required this.baseUrl,
+  });
+
+  factory Config.fromEnv(Map<String, String> env) {
+    assert(env['SUPABASE_URL'] != null, 'SUPABASE_URL must be set in .env');
+    assert(
+      env['SUPABASE_ANON_KEY'] != null,
+      'SUPABASE_ANON_KEY must be set in .env',
+    );
+    assert(env['BASE_URL'] != null, 'BASE_URL must be set in .env');
+
+    return Config(
+      supabaseUrl: env['SUPABASE_URL']!,
+      supabaseAnonKey: env['SUPABASE_ANON_KEY']!,
+      baseUrl: env['BASE_URL']!,
+    );
+  }
+
+  final String supabaseUrl;
+  final String supabaseAnonKey;
+  final String baseUrl;
+}
+
+typedef BootstrapBuilder = FutureOr<Widget> Function(
+  Supabase supabase,
+  Config config,
+);
+
 Future<void> bootstrap({
   required BootstrapBuilder builder,
   required String environment,
@@ -33,13 +65,9 @@ Future<void> bootstrap({
   );
 
   runApp(
-    await builder(supabase),
+    await builder(supabase, Config.fromEnv(dotenv.env)),
   );
 }
-
-typedef BootstrapBuilder = FutureOr<Widget> Function(
-  Supabase supabase,
-);
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();

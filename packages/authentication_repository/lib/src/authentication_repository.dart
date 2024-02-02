@@ -55,6 +55,11 @@ class AuthenticationRepository {
     }
   }
 
+  /// Get the current user token.
+  Future<String?> token() async {
+    return _supabase.auth.currentSession?.accessToken;
+  }
+
   /// Sign up with credentials `email` and `password`.
   /// Throws a [AuthenticationFailure] if an exception occurs.
   Future<void> signOut() async {

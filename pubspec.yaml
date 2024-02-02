@@ -12,6 +12,10 @@ dependencies:
     path: ./packages/authentication_repository
   auto_route: ^7.8.4
   bloc: ^8.1.2
+  boxy: ^2.2.0
+  cached_network_image: ^3.3.1
+  dio: ^5.4.0
+  extended_image: ^8.2.0
   flash: ^3.1.0
   flutter:
     sdk: flutter
@@ -26,7 +30,11 @@ dependencies:
   freezed_annotation: ^2.4.1
   geoxml: ^2.5.2
   google_fonts: ^6.1.0
-  intl: ^0.18.0
+  intl: ^0.18.1
+  posts_repository:
+    path: ./packages/posts_repository
+  quake_safe_platform_client:
+    path: ./packages/quake_safe_platform_client
   reactive_forms: ^16.1.1
   supabase_flutter: ^2.3.0
 

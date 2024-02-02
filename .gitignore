@@ -112,4 +112,6 @@ app.*.map.json
 !.idea/runConfigurations/
 
 
-*.env*
+.env.staging
+.env.development
+.env
