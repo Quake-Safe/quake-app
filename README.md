@@ -31,7 +31,21 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 
-_\*Quake Safe App works on iOS, Android, Web, and Windows._
+_\*Quake Safe App works only Android\*_
+
+
+### Environment Variables 🌐
+
+Before running the app, make sure to have the following environment variables set in a `.env.development`, `.env.staging`, and `.env` file at the root of the project. This is to make sure that each flavor has its own environment variables.
+```
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
+BASE_URL=
+```
+
+If you don't have the `.env` file, you can create one by copying the `.env.example` file and renaming it to `.env`.
+
+You may ask for the environment variables from the project owner.
 
 ---
 
