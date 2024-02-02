@@ -62,7 +62,10 @@ class ArticlesPage extends StatelessWidget implements AutoRouteWrapper {
                 return state.maybeMap(
                   success: (_) {
                     final articles = _.articles;
-                    return ArticlesList(articles: articles);
+                    return SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: ArticlesList(articles: articles),
+                    );
                   },
                   orElse: () {
                     return const SliverFillRemaining(
