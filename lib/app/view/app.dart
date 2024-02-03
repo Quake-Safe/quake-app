@@ -9,7 +9,7 @@ import 'package:quake_safe_app/router/router.dart';
 import 'package:quake_safe_app/theme/theme.dart';
 
 class App extends StatelessWidget {
-  App({
+  const App({
     required AuthenticationRepository authenticationRepository,
     required PostsRepository postsRepository,
     super.key,
@@ -18,8 +18,6 @@ class App extends StatelessWidget {
 
   final AuthenticationRepository _authenticationRepository;
   final PostsRepository _postsRepository;
-
-  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -36,18 +34,29 @@ class App extends StatelessWidget {
         create: (context) => AppBloc(
           authenticationRepository: _authenticationRepository,
         ),
-        child: ScreenUtilInit(
-          designSize: const Size(360, 800),
-          builder: (_, child) {
-            return MaterialApp.router(
-              routerConfig: _appRouter.config(),
-              theme: theme,
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
-              supportedLocales: AppLocalizations.supportedLocales,
-            );
-          },
-        ),
+        child: AppView(),
       ),
+    );
+  }
+}
+
+class AppView extends StatelessWidget {
+  AppView({super.key});
+
+  final _appRouter = AppRouter();
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(360, 800),
+      builder: (_, child) {
+        return MaterialApp.router(
+          routerConfig: _appRouter.config(),
+          theme: theme,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+        );
+      },
     );
   }
 }

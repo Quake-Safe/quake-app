@@ -48,46 +48,48 @@ class _SplashPageState extends State<SplashPage> {
       child: Scaffold(
         backgroundColor: QuakeSafeColors.primary,
         body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
-                'assets/icons/logo.png',
-                height: 137.sp,
-                width: 159.sp,
-              ),
-              SizedBox(
-                height: 8.h,
-              ),
-              Text.rich(
-                TextSpan(
-                  text: 'QUAKE',
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  'assets/icons/logo.png',
+                  height: 137.sp,
+                  width: 159.sp,
+                ),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Text.rich(
+                  TextSpan(
+                    text: 'QUAKE',
+                    style: GoogleFonts.urbanist(
+                      fontSize: 50.sp,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w300,
+                    ),
+                    children: const [
+                      TextSpan(
+                        text: 'SAFE',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'Be Prepared. Stay Safe',
                   style: GoogleFonts.urbanist(
-                    fontSize: 50.sp,
+                    fontSize: 24.sp,
                     color: Colors.white,
                     fontWeight: FontWeight.w300,
                   ),
-                  children: const [
-                    TextSpan(
-                      text: 'SAFE',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                'Be Prepared. Stay Safe',
-                style: GoogleFonts.urbanist(
-                  fontSize: 24.sp,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
