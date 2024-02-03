@@ -14,6 +14,9 @@ _$PostImpl _$$PostImplFromJson(Map<String, dynamic> json) => _$PostImpl(
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       media: PostMedia.fromJson(json['media'] as Map<String, dynamic>),
       author: PostAuthor.fromJson(json['author'] as Map<String, dynamic>),
+      totalLikes: json['totalLikes'] as int,
+      totalComments: json['totalComments'] as int,
+      hasLiked: json['hasLiked'] as bool,
     );
 
 Map<String, dynamic> _$$PostImplToJson(_$PostImpl instance) =>
@@ -25,4 +28,7 @@ Map<String, dynamic> _$$PostImplToJson(_$PostImpl instance) =>
       'updatedAt': instance.updatedAt.toIso8601String(),
       'media': instance.media,
       'author': instance.author,
+      'totalLikes': instance.totalLikes,
+      'totalComments': instance.totalComments,
+      'hasLiked': instance.hasLiked,
     };

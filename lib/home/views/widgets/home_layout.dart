@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quake_safe_app/home/views/widgets/home_app_bar.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({

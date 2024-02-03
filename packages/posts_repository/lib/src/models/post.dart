@@ -21,6 +21,9 @@ class Post with _$Post {
     @JsonKey(fromJson: DateTime.parse) required DateTime updatedAt,
     required PostMedia media,
     required PostAuthor author,
+    required int totalLikes,
+    required int totalComments,
+    required bool hasLiked,
   }) = _Post;
 
   /// fromJson

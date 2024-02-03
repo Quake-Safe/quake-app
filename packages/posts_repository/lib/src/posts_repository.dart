@@ -21,4 +21,14 @@ class PostsRepository {
 
     return posts;
   }
+
+  /// Likes a post
+  Future<void> likePost(String postId) async {
+    await _client.post<Map<String, dynamic>>('/post/$postId/like');
+  }
+
+  /// Unlikes a post
+  Future<void> unlikePost(String postId) async {
+    await _client.delete<Map<String, dynamic>>('/post/$postId/like');
+  }
 }

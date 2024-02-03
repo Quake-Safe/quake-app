@@ -1,10 +1,7 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:boxy/slivers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quake_safe_app/articles/bloc/articles_bloc.dart';
+import 'package:quake_safe_app/articles/blocs/blocs.dart';
 import 'package:quake_safe_app/articles/views/widgets/articles_story_list.dart';
 import 'package:quake_safe_app/articles/views/widgets/widgets.dart';
 import 'package:quake_safe_app/home/home.dart';

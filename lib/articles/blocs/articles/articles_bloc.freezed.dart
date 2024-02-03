@@ -19,32 +19,38 @@ mixin _$ArticlesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? refreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Refreshed value) refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Refreshed value)? refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Refreshed value)? refreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() refreshed,
   }) {
     return started();
   }
@@ -115,6 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? refreshed,
   }) {
     return started?.call();
   }
@@ -123,6 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? refreshed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -135,6 +144,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Refreshed value) refreshed,
   }) {
     return started(this);
   }
@@ -143,6 +153,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Refreshed value)? refreshed,
   }) {
     return started?.call(this);
   }
@@ -151,6 +162,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Refreshed value)? refreshed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,6 +174,108 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements ArticlesEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$RefreshedImplCopyWith<$Res> {
+  factory _$$RefreshedImplCopyWith(
+          _$RefreshedImpl value, $Res Function(_$RefreshedImpl) then) =
+      __$$RefreshedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefreshedImplCopyWithImpl<$Res>
+    extends _$ArticlesEventCopyWithImpl<$Res, _$RefreshedImpl>
+    implements _$$RefreshedImplCopyWith<$Res> {
+  __$$RefreshedImplCopyWithImpl(
+      _$RefreshedImpl _value, $Res Function(_$RefreshedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RefreshedImpl implements _Refreshed {
+  const _$RefreshedImpl();
+
+  @override
+  String toString() {
+    return 'ArticlesEvent.refreshed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RefreshedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() refreshed,
+  }) {
+    return refreshed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? refreshed,
+  }) {
+    return refreshed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? refreshed,
+    required TResult orElse(),
+  }) {
+    if (refreshed != null) {
+      return refreshed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Refreshed value) refreshed,
+  }) {
+    return refreshed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Refreshed value)? refreshed,
+  }) {
+    return refreshed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Refreshed value)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (refreshed != null) {
+      return refreshed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Refreshed implements ArticlesEvent {
+  const factory _Refreshed() = _$RefreshedImpl;
 }
 
 /// @nodoc

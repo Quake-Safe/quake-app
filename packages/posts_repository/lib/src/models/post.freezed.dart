@@ -29,6 +29,9 @@ mixin _$Post {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   PostMedia get media => throw _privateConstructorUsedError;
   PostAuthor get author => throw _privateConstructorUsedError;
+  int get totalLikes => throw _privateConstructorUsedError;
+  int get totalComments => throw _privateConstructorUsedError;
+  bool get hasLiked => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +50,10 @@ abstract class $PostCopyWith<$Res> {
       @JsonKey(fromJson: DateTime.parse) DateTime createdAt,
       @JsonKey(fromJson: DateTime.parse) DateTime updatedAt,
       PostMedia media,
-      PostAuthor author});
+      PostAuthor author,
+      int totalLikes,
+      int totalComments,
+      bool hasLiked});
 
   $PostMediaCopyWith<$Res> get media;
   $PostAuthorCopyWith<$Res> get author;
@@ -73,6 +79,9 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
     Object? updatedAt = null,
     Object? media = null,
     Object? author = null,
+    Object? totalLikes = null,
+    Object? totalComments = null,
+    Object? hasLiked = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -103,6 +112,18 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as PostAuthor,
+      totalLikes: null == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalComments: null == totalComments
+          ? _value.totalComments
+          : totalComments // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasLiked: null == hasLiked
+          ? _value.hasLiked
+          : hasLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -137,7 +158,10 @@ abstract class _$$PostImplCopyWith<$Res> implements $PostCopyWith<$Res> {
       @JsonKey(fromJson: DateTime.parse) DateTime createdAt,
       @JsonKey(fromJson: DateTime.parse) DateTime updatedAt,
       PostMedia media,
-      PostAuthor author});
+      PostAuthor author,
+      int totalLikes,
+      int totalComments,
+      bool hasLiked});
 
   @override
   $PostMediaCopyWith<$Res> get media;
@@ -162,6 +186,9 @@ class __$$PostImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? media = null,
     Object? author = null,
+    Object? totalLikes = null,
+    Object? totalComments = null,
+    Object? hasLiked = null,
   }) {
     return _then(_$PostImpl(
       id: null == id
@@ -192,6 +219,18 @@ class __$$PostImplCopyWithImpl<$Res>
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as PostAuthor,
+      totalLikes: null == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalComments: null == totalComments
+          ? _value.totalComments
+          : totalComments // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasLiked: null == hasLiked
+          ? _value.hasLiked
+          : hasLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -206,7 +245,10 @@ class _$PostImpl implements _Post {
       @JsonKey(fromJson: DateTime.parse) required this.createdAt,
       @JsonKey(fromJson: DateTime.parse) required this.updatedAt,
       required this.media,
-      required this.author});
+      required this.author,
+      required this.totalLikes,
+      required this.totalComments,
+      required this.hasLiked});
 
   factory _$PostImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostImplFromJson(json);
@@ -227,10 +269,16 @@ class _$PostImpl implements _Post {
   final PostMedia media;
   @override
   final PostAuthor author;
+  @override
+  final int totalLikes;
+  @override
+  final int totalComments;
+  @override
+  final bool hasLiked;
 
   @override
   String toString() {
-    return 'Post(id: $id, title: $title, content: $content, createdAt: $createdAt, updatedAt: $updatedAt, media: $media, author: $author)';
+    return 'Post(id: $id, title: $title, content: $content, createdAt: $createdAt, updatedAt: $updatedAt, media: $media, author: $author, totalLikes: $totalLikes, totalComments: $totalComments, hasLiked: $hasLiked)';
   }
 
   @override
@@ -246,13 +294,19 @@ class _$PostImpl implements _Post {
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.media, media) || other.media == media) &&
-            (identical(other.author, author) || other.author == author));
+            (identical(other.author, author) || other.author == author) &&
+            (identical(other.totalLikes, totalLikes) ||
+                other.totalLikes == totalLikes) &&
+            (identical(other.totalComments, totalComments) ||
+                other.totalComments == totalComments) &&
+            (identical(other.hasLiked, hasLiked) ||
+                other.hasLiked == hasLiked));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, content, createdAt, updatedAt, media, author);
+  int get hashCode => Object.hash(runtimeType, id, title, content, createdAt,
+      updatedAt, media, author, totalLikes, totalComments, hasLiked);
 
   @JsonKey(ignore: true)
   @override
@@ -276,7 +330,10 @@ abstract class _Post implements Post {
       @JsonKey(fromJson: DateTime.parse) required final DateTime createdAt,
       @JsonKey(fromJson: DateTime.parse) required final DateTime updatedAt,
       required final PostMedia media,
-      required final PostAuthor author}) = _$PostImpl;
+      required final PostAuthor author,
+      required final int totalLikes,
+      required final int totalComments,
+      required final bool hasLiked}) = _$PostImpl;
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$PostImpl.fromJson;
 
@@ -296,6 +353,12 @@ abstract class _Post implements Post {
   PostMedia get media;
   @override
   PostAuthor get author;
+  @override
+  int get totalLikes;
+  @override
+  int get totalComments;
+  @override
+  bool get hasLiked;
   @override
   @JsonKey(ignore: true)
   _$$PostImplCopyWith<_$PostImpl> get copyWith =>

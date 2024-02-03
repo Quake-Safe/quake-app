@@ -8,14 +8,9 @@ import 'package:quake_safe_app/router/router.gr.dart';
 import 'package:quake_safe_app/theme/colors.dart';
 
 @RoutePage()
-class SplashPage extends StatefulWidget {
+class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
   Future<void> _delayed(void Function() callback) async {
     await Future.delayed(
       const Duration(seconds: 3),
@@ -28,15 +23,15 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<AppBloc, AppState>(
       listener: (context, state) {
         state.maybeWhen(
-          authenticated: (_) async {
-            await _delayed(() {
+          authenticated: (_) {
+            _delayed(() {
               AutoRouter.of(context).replace(
                 const HomeRoute(),
               );
             });
           },
-          unauthenticated: () async {
-            await _delayed(() {
+          unauthenticated: () {
+            _delayed(() {
               AutoRouter.of(context).replace(
                 const SignInRoute(),
               );
@@ -48,48 +43,46 @@ class _SplashPageState extends State<SplashPage> {
       child: Scaffold(
         backgroundColor: QuakeSafeColors.primary,
         body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.asset(
-                  'assets/icons/logo.png',
-                  height: 137.sp,
-                  width: 159.sp,
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text.rich(
-                  TextSpan(
-                    text: 'QUAKE',
-                    style: GoogleFonts.urbanist(
-                      fontSize: 50.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w300,
-                    ),
-                    children: const [
-                      TextSpan(
-                        text: 'SAFE',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  'Be Prepared. Stay Safe',
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/icons/logo.png',
+                height: 137.sp,
+                width: 159.sp,
+              ),
+              SizedBox(
+                height: 8.h,
+              ),
+              Text.rich(
+                TextSpan(
+                  text: 'QUAKE',
                   style: GoogleFonts.urbanist(
-                    fontSize: 24.sp,
+                    fontSize: 50.sp,
                     color: Colors.white,
                     fontWeight: FontWeight.w300,
                   ),
-                  textAlign: TextAlign.center,
+                  children: const [
+                    TextSpan(
+                      text: 'SAFE',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                'Be Prepared. Stay Safe',
+                style: GoogleFonts.urbanist(
+                  fontSize: 24.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         ),
       ),

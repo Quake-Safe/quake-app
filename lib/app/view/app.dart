@@ -34,27 +34,28 @@ class App extends StatelessWidget {
         create: (context) => AppBloc(
           authenticationRepository: _authenticationRepository,
         ),
-        child: AppView(),
+        child: const AppView(),
       ),
     );
   }
 }
 
 class AppView extends StatelessWidget {
-  AppView({super.key});
+  const AppView({super.key});
 
-  final _appRouter = AppRouter();
+  static final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 800),
-      builder: (_, child) {
-        return MaterialApp.router(
-          routerConfig: _appRouter.config(),
-          theme: theme,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
+      theme: theme,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      builder: (context, child) {
+        return ScreenUtilInit(
+          designSize: const Size(360, 800),
+          child: child,
         );
       },
     );

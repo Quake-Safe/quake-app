@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quake_safe_app/articles/blocs/article/article_bloc.dart';
 
 class ArticlesListItemActions extends StatelessWidget {
   const ArticlesListItemActions({
@@ -12,11 +14,19 @@ class ArticlesListItemActions extends StatelessWidget {
     required this.onNavigatePressed,
     required this.onCommentsPressed,
     required this.onReadMorePressed,
+    this.hasLiked = false,
+    this.hasBookmarked = false,
+    this.hasCommented = false,
+    this.isLoading = true,
     super.key,
   });
 
   final num totalLikes;
   final num totalComments;
+  final bool hasLiked;
+  final bool hasBookmarked;
+  final bool hasCommented;
+  final bool isLoading;
 
   final void Function() onLikePressed;
   final void Function() onBookmarkPressed;
@@ -44,11 +54,19 @@ class ArticlesListItemActions extends StatelessWidget {
               elevation: 0,
               animationDuration: Duration.zero,
               visualDensity: VisualDensity.compact,
-              minimumSize: const Size(0, 0),
+              minimumSize: Size.zero,
               padding: EdgeInsets.zero,
               shape: const CircleBorder(),
             ),
-            child: icon,
+            child: isLoading
+                ? SizedBox(
+                    height: 16.h,
+                    width: 16.w,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 1.sp,
+                    ),
+                  )
+                : icon,
           ),
         ),
         if (data.isNotEmpty) ...[
@@ -67,7 +85,9 @@ class ArticlesListItemActions extends StatelessWidget {
       children: [
         _buildActionItem(
           data: totalLikes.toString(),
-          icon: SvgPicture.asset('assets/icons/favorite-icon.svg'),
+          icon: hasLiked
+              ? SvgPicture.asset('assets/icons/favorite-filled-icon.svg')
+              : SvgPicture.asset('assets/icons/favorite-icon.svg'),
           onPressed: onLikePressed,
         ),
         SizedBox(width: 8.sp),
