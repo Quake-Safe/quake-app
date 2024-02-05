@@ -20,18 +20,21 @@ mixin _$ArticlesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() refreshed,
+    required TResult Function(List<RealtimePost> posts) postsUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? refreshed,
+    TResult? Function(List<RealtimePost> posts)? postsUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? refreshed,
+    TResult Function(List<RealtimePost> posts)? postsUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ArticlesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Refreshed value) refreshed,
+    required TResult Function(_PostsUpdated value) postsUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Refreshed value)? refreshed,
+    TResult? Function(_PostsUpdated value)? postsUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Refreshed value)? refreshed,
+    TResult Function(_PostsUpdated value)? postsUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() refreshed,
+    required TResult Function(List<RealtimePost> posts) postsUpdated,
   }) {
     return started();
   }
@@ -123,6 +130,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? refreshed,
+    TResult? Function(List<RealtimePost> posts)? postsUpdated,
   }) {
     return started?.call();
   }
@@ -132,6 +140,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? refreshed,
+    TResult Function(List<RealtimePost> posts)? postsUpdated,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +154,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Refreshed value) refreshed,
+    required TResult Function(_PostsUpdated value) postsUpdated,
   }) {
     return started(this);
   }
@@ -154,6 +164,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Refreshed value)? refreshed,
+    TResult? Function(_PostsUpdated value)? postsUpdated,
   }) {
     return started?.call(this);
   }
@@ -163,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Refreshed value)? refreshed,
+    TResult Function(_PostsUpdated value)? postsUpdated,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -216,6 +228,7 @@ class _$RefreshedImpl implements _Refreshed {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() refreshed,
+    required TResult Function(List<RealtimePost> posts) postsUpdated,
   }) {
     return refreshed();
   }
@@ -225,6 +238,7 @@ class _$RefreshedImpl implements _Refreshed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? refreshed,
+    TResult? Function(List<RealtimePost> posts)? postsUpdated,
   }) {
     return refreshed?.call();
   }
@@ -234,6 +248,7 @@ class _$RefreshedImpl implements _Refreshed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? refreshed,
+    TResult Function(List<RealtimePost> posts)? postsUpdated,
     required TResult orElse(),
   }) {
     if (refreshed != null) {
@@ -247,6 +262,7 @@ class _$RefreshedImpl implements _Refreshed {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Refreshed value) refreshed,
+    required TResult Function(_PostsUpdated value) postsUpdated,
   }) {
     return refreshed(this);
   }
@@ -256,6 +272,7 @@ class _$RefreshedImpl implements _Refreshed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Refreshed value)? refreshed,
+    TResult? Function(_PostsUpdated value)? postsUpdated,
   }) {
     return refreshed?.call(this);
   }
@@ -265,6 +282,7 @@ class _$RefreshedImpl implements _Refreshed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Refreshed value)? refreshed,
+    TResult Function(_PostsUpdated value)? postsUpdated,
     required TResult orElse(),
   }) {
     if (refreshed != null) {
@@ -276,6 +294,152 @@ class _$RefreshedImpl implements _Refreshed {
 
 abstract class _Refreshed implements ArticlesEvent {
   const factory _Refreshed() = _$RefreshedImpl;
+}
+
+/// @nodoc
+abstract class _$$PostsUpdatedImplCopyWith<$Res> {
+  factory _$$PostsUpdatedImplCopyWith(
+          _$PostsUpdatedImpl value, $Res Function(_$PostsUpdatedImpl) then) =
+      __$$PostsUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<RealtimePost> posts});
+}
+
+/// @nodoc
+class __$$PostsUpdatedImplCopyWithImpl<$Res>
+    extends _$ArticlesEventCopyWithImpl<$Res, _$PostsUpdatedImpl>
+    implements _$$PostsUpdatedImplCopyWith<$Res> {
+  __$$PostsUpdatedImplCopyWithImpl(
+      _$PostsUpdatedImpl _value, $Res Function(_$PostsUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? posts = null,
+  }) {
+    return _then(_$PostsUpdatedImpl(
+      null == posts
+          ? _value._posts
+          : posts // ignore: cast_nullable_to_non_nullable
+              as List<RealtimePost>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostsUpdatedImpl implements _PostsUpdated {
+  const _$PostsUpdatedImpl(final List<RealtimePost> posts) : _posts = posts;
+
+  final List<RealtimePost> _posts;
+  @override
+  List<RealtimePost> get posts {
+    if (_posts is EqualUnmodifiableListView) return _posts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_posts);
+  }
+
+  @override
+  String toString() {
+    return 'ArticlesEvent.postsUpdated(posts: $posts)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostsUpdatedImpl &&
+            const DeepCollectionEquality().equals(other._posts, _posts));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posts));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostsUpdatedImplCopyWith<_$PostsUpdatedImpl> get copyWith =>
+      __$$PostsUpdatedImplCopyWithImpl<_$PostsUpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() refreshed,
+    required TResult Function(List<RealtimePost> posts) postsUpdated,
+  }) {
+    return postsUpdated(posts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? refreshed,
+    TResult? Function(List<RealtimePost> posts)? postsUpdated,
+  }) {
+    return postsUpdated?.call(posts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? refreshed,
+    TResult Function(List<RealtimePost> posts)? postsUpdated,
+    required TResult orElse(),
+  }) {
+    if (postsUpdated != null) {
+      return postsUpdated(posts);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Refreshed value) refreshed,
+    required TResult Function(_PostsUpdated value) postsUpdated,
+  }) {
+    return postsUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Refreshed value)? refreshed,
+    TResult? Function(_PostsUpdated value)? postsUpdated,
+  }) {
+    return postsUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Refreshed value)? refreshed,
+    TResult Function(_PostsUpdated value)? postsUpdated,
+    required TResult orElse(),
+  }) {
+    if (postsUpdated != null) {
+      return postsUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostsUpdated implements ArticlesEvent {
+  const factory _PostsUpdated(final List<RealtimePost> posts) =
+      _$PostsUpdatedImpl;
+
+  List<RealtimePost> get posts;
+  @JsonKey(ignore: true)
+  _$$PostsUpdatedImplCopyWith<_$PostsUpdatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

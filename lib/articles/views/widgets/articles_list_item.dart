@@ -103,7 +103,7 @@ class ArticlesListItem extends StatelessWidget {
 
                               return ArticlesListItemActions(
                                 totalLikes: post.totalLikes,
-                                totalComments: 12,
+                                totalComments: post.totalComments,
                                 isLoading: isLoading,
                                 hasLiked: post.hasLiked,
                                 onLikePressed: () {

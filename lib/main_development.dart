@@ -16,7 +16,7 @@ void main() {
         authenticationRepository: authenticationRepository,
       );
 
-      final postsRepository = PostsRepository(client);
+      final postsRepository = PostsRepository(client, supabase.client);
 
       return App(
         authenticationRepository: authenticationRepository,

@@ -22,7 +22,6 @@ class QuakeSafePlatformClient {
     required String baseUrl,
     required AuthenticationRepository authenticationRepository,
   }) {
-    print('Creating Dio client with base url: $baseUrl');
     _client = Dio(BaseOptions(baseUrl: baseUrl))
       ..interceptors.add(
         InterceptorsWrapper(

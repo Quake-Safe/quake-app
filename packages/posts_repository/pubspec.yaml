@@ -19,3 +19,4 @@ dependencies:
   json_annotation: ^4.8.1
   quake_safe_platform_client:
     path: ../quake_safe_platform_client
+  supabase: ^2.0.7
