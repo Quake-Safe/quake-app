@@ -21,11 +21,7 @@ class ArticlesListItem extends StatelessWidget {
     return BlocListener<ArticleBloc, ArticleState>(
       listener: (context, state) {
         state.maybeWhen(
-          success: (message) {
-            context.read<ArticlesBloc>().add(
-                  const ArticlesEvent.refreshed(),
-                );
-
+          success: (message, _, __, ___, ____) {
             return ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(message),
@@ -101,15 +97,36 @@ class ArticlesListItem extends StatelessWidget {
                                 orElse: () => false,
                               );
 
+                              final totalLikes = state.maybeMap(
+                                success: (state) => state.totalLikes,
+                                orElse: () => post.totalLikes,
+                              );
+
+                              final totalComments = state.maybeMap(
+                                success: (state) => state.totalComments,
+                                orElse: () => post.totalComments,
+                              );
+
+                              final hasLiked = state.maybeMap(
+                                success: (state) => state.hasLiked,
+                                orElse: () => post.hasLiked,
+                              );
+
+                              final hasCommented = state.maybeMap(
+                                success: (state) => state.hasCommented,
+                                orElse: () => false,
+                              );
+
                               return ArticlesListItemActions(
-                                totalLikes: post.totalLikes,
-                                totalComments: post.totalComments,
+                                totalLikes: totalLikes,
+                                totalComments: totalComments,
                                 isLoading: isLoading,
-                                hasLiked: post.hasLiked,
+                                hasLiked: hasLiked,
+                                hasCommented: hasCommented,
                                 onLikePressed: () {
                                   context.read<ArticleBloc>().add(
                                         ArticleEvent.likeToggled(
-                                          hasLiked: post.hasLiked,
+                                          hasLiked: hasLiked,
                                         ),
                                       );
                                 },

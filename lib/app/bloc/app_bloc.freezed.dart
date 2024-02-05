@@ -443,7 +443,7 @@ mixin _$AppState {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function(UserProfile user) authenticated,
     required TResult Function() unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
@@ -451,7 +451,7 @@ mixin _$AppState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function()? loading,
-    TResult? Function(User user)? authenticated,
+    TResult? Function(UserProfile user)? authenticated,
     TResult? Function()? unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
@@ -459,7 +459,7 @@ mixin _$AppState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function(UserProfile user)? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) =>
@@ -548,7 +548,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function(UserProfile user) authenticated,
     required TResult Function() unauthenticated,
   }) {
     return unknown();
@@ -559,7 +559,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function()? loading,
-    TResult? Function(User user)? authenticated,
+    TResult? Function(UserProfile user)? authenticated,
     TResult? Function()? unauthenticated,
   }) {
     return unknown?.call();
@@ -570,7 +570,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function(UserProfile user)? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
@@ -662,7 +662,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function(UserProfile user) authenticated,
     required TResult Function() unauthenticated,
   }) {
     return loading();
@@ -673,7 +673,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function()? loading,
-    TResult? Function(User user)? authenticated,
+    TResult? Function(UserProfile user)? authenticated,
     TResult? Function()? unauthenticated,
   }) {
     return loading?.call();
@@ -684,7 +684,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function(UserProfile user)? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
@@ -742,7 +742,9 @@ abstract class _$$AuthenticatedImplCopyWith<$Res> {
           _$AuthenticatedImpl value, $Res Function(_$AuthenticatedImpl) then) =
       __$$AuthenticatedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({User user});
+  $Res call({UserProfile user});
+
+  $UserProfileCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -762,8 +764,16 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as UserProfile,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserProfileCopyWith<$Res> get user {
+    return $UserProfileCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -773,7 +783,7 @@ class _$AuthenticatedImpl implements _Authenticated {
   const _$AuthenticatedImpl(this.user);
 
   @override
-  final User user;
+  final UserProfile user;
 
   @override
   String toString() {
@@ -802,7 +812,7 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function(UserProfile user) authenticated,
     required TResult Function() unauthenticated,
   }) {
     return authenticated(user);
@@ -813,7 +823,7 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function()? loading,
-    TResult? Function(User user)? authenticated,
+    TResult? Function(UserProfile user)? authenticated,
     TResult? Function()? unauthenticated,
   }) {
     return authenticated?.call(user);
@@ -824,7 +834,7 @@ class _$AuthenticatedImpl implements _Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function(UserProfile user)? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {
@@ -873,9 +883,9 @@ class _$AuthenticatedImpl implements _Authenticated {
 }
 
 abstract class _Authenticated implements AppState {
-  const factory _Authenticated(final User user) = _$AuthenticatedImpl;
+  const factory _Authenticated(final UserProfile user) = _$AuthenticatedImpl;
 
-  User get user;
+  UserProfile get user;
   @JsonKey(ignore: true)
   _$$AuthenticatedImplCopyWith<_$AuthenticatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -921,7 +931,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function(UserProfile user) authenticated,
     required TResult Function() unauthenticated,
   }) {
     return unauthenticated();
@@ -932,7 +942,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function()? loading,
-    TResult? Function(User user)? authenticated,
+    TResult? Function(UserProfile user)? authenticated,
     TResult? Function()? unauthenticated,
   }) {
     return unauthenticated?.call();
@@ -943,7 +953,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function(UserProfile user)? authenticated,
     TResult Function()? unauthenticated,
     required TResult orElse(),
   }) {

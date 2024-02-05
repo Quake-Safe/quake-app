@@ -1,4 +1,4 @@
-name: authentication_repository
+name: user_repository
 description: A Very Good Project created by Very Good CLI.
 version: 0.1.0+1
 publish_to: none
@@ -13,12 +13,9 @@ dev_dependencies:
   mocktail: ^1.0.0
   test: ^1.19.2
   very_good_analysis: ^5.1.0
+
 dependencies:
-  dio: ^5.4.0
-  fresh: ^0.4.2
-  fresh_dio: ^0.4.1
-  supabase: ^2.0.5
-  quake_safe_platform_client:
-    path: ../quake_safe_platform_client
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
+  quake_safe_platform_client:
+    path: ../quake_safe_platform_client

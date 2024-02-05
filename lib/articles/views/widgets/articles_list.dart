@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:posts_repository/posts_repository.dart';
+import 'package:quake_safe_app/app/bloc/app_bloc.dart';
 import 'package:quake_safe_app/articles/blocs/blocs.dart';
 import 'package:quake_safe_app/articles/views/widgets/widgets.dart';
 
@@ -16,6 +17,12 @@ class ArticlesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userId = context.select(
+      (AppBloc b) => b.state.mapOrNull(
+        authenticated: (state) => state.user.id,
+      ),
+    );
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16.sp)),
@@ -31,8 +38,9 @@ class ArticlesList extends StatelessWidget {
           final isLast = index == articles.length - 1;
           return BlocProvider(
             create: (context) => ArticleBloc(
-              articleId: article.id,
               postsRepository: context.read(),
+              userId: userId!,
+              articleId: article.id,
             ),
             child: Padding(
               padding: EdgeInsets.only(bottom: isLast ? 0 : 16.sp),

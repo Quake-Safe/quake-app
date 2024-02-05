@@ -12,6 +12,7 @@ import 'package:quake_safe_app/home/home.dart';
 import 'package:quake_safe_app/signin/views/signin_page.dart';
 import 'package:quake_safe_app/splash/splash.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:user_repository/user_repository.dart';
 
 class MockUser extends Mock implements User {}
 
@@ -24,16 +25,20 @@ class MockAuthenticationRepository extends Mock
 
 class MockPostsRepository extends Mock implements PostsRepository {}
 
+class MockUserRepository extends Mock implements UserRepository {}
+
 class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
 
 void main() {
   group('App', () {
     late final AuthenticationRepository authenticationRepository;
     late final PostsRepository postsRepository;
+    late final UserRepository userRepository;
 
     setUp(() {
       authenticationRepository = MockAuthenticationRepository();
       postsRepository = MockPostsRepository();
+      userRepository = MockUserRepository();
     });
 
     testWidgets('renders AppView', (tester) async {
@@ -41,6 +46,7 @@ void main() {
         App(
           authenticationRepository: authenticationRepository,
           postsRepository: postsRepository,
+          userRepository: userRepository,
         ),
       );
 
@@ -78,7 +84,7 @@ void main() {
           value: authenticationRepository,
           child: BlocProvider.value(
             value: appBloc,
-            child: AppView(),
+            child: const AppView(),
           ),
         ),
       );
@@ -102,7 +108,7 @@ void main() {
           value: authenticationRepository,
           child: BlocProvider.value(
             value: appBloc,
-            child: AppView(),
+            child: const AppView(),
           ),
         ),
       );
@@ -133,7 +139,7 @@ void main() {
           ],
           child: BlocProvider.value(
             value: appBloc,
-            child: AppView(),
+            child: const AppView(),
           ),
         ),
       );

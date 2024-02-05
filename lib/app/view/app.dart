@@ -7,18 +7,21 @@ import 'package:quake_safe_app/app/bloc/app_bloc.dart';
 import 'package:quake_safe_app/l10n/l10n.dart';
 import 'package:quake_safe_app/router/router.dart';
 import 'package:quake_safe_app/theme/theme.dart';
+import 'package:user_repository/user_repository.dart';
 
 class App extends StatelessWidget {
   const App({
     required AuthenticationRepository authenticationRepository,
     required PostsRepository postsRepository,
+    required UserRepository userRepository,
     super.key,
   })  : _authenticationRepository = authenticationRepository,
-        _postsRepository = postsRepository;
+        _postsRepository = postsRepository,
+        _userRepository = userRepository;
 
   final AuthenticationRepository _authenticationRepository;
   final PostsRepository _postsRepository;
-
+  final UserRepository _userRepository;
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
@@ -29,10 +32,14 @@ class App extends StatelessWidget {
         RepositoryProvider.value(
           value: _postsRepository,
         ),
+        RepositoryProvider.value(
+          value: _userRepository,
+        ),
       ],
       child: BlocProvider(
         create: (context) => AppBloc(
           authenticationRepository: _authenticationRepository,
+          userRepository: _userRepository,
         ),
         child: const AppView(),
       ),

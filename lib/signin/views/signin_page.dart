@@ -48,7 +48,7 @@ class SignInPage extends StatelessWidget implements AutoRouteWrapper {
                       color: Colors.white,
                     ),
                   ),
-                  SignInForm(),
+                  const SignInForm(),
                 ],
               ),
             ),

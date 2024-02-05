@@ -67,7 +67,7 @@ class ArticlesListItemActions extends StatelessWidget {
                 : icon,
           ),
         ),
-        if (data.isNotEmpty) ...[
+        if (data.isNotEmpty && !isLoading) ...[
           SizedBox(width: 4.sp),
           Text(
             data,

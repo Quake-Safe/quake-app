@@ -10,9 +10,9 @@ import 'package:quake_safe_app/signin/views/widgets/signin_form_submit_button.da
 import 'package:reactive_forms/reactive_forms.dart';
 
 class SignInForm extends StatelessWidget {
-  SignInForm({super.key});
+  const SignInForm({super.key});
 
-  final _form = SignInFormModel.build();
+  static final _form = SignInFormModel.build();
 
   @override
   Widget build(BuildContext context) {

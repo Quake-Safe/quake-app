@@ -1,5 +1,4 @@
 import 'package:posts_repository/posts_repository.dart';
-import 'package:posts_repository/src/models/realtime_post.dart';
 import 'package:quake_safe_platform_client/quake_safe_platform_client.dart';
 import 'package:supabase/supabase.dart';
 
@@ -37,7 +36,7 @@ class PostsRepository {
     return _supabaseClient
         .from(_postLikesTable)
         .stream(primaryKey: ['id'])
-        .eq('id', postId)
+        .eq('postId', postId)
         .map((event) {
           return event.map(PostLike.fromJson).toList();
         });
@@ -49,7 +48,7 @@ class PostsRepository {
     return _supabaseClient
         .from(_postCommentsTable)
         .stream(primaryKey: ['id'])
-        .eq('id', postId)
+        .eq('postId', postId)
         .map((event) {
           return event.map(PostComment.fromJson).toList();
         });

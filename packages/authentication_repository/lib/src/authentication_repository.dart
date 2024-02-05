@@ -21,8 +21,9 @@ class AuthenticationFailure implements Exception {
 /// {@endtemplate}
 class AuthenticationRepository {
   /// {@macro authentication_repository}
-  const AuthenticationRepository(SupabaseClient supabase)
-      : _supabase = supabase;
+  const AuthenticationRepository(
+    SupabaseClient supabase,
+  ) : _supabase = supabase;
 
   final SupabaseClient _supabase;
 

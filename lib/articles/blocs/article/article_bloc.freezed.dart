@@ -16,42 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ArticleEvent {
-  bool get hasLiked => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool hasLiked) likeToggled,
+    required TResult Function(List<PostComment> comments) commentsUpdated,
+    required TResult Function(List<PostLike> likes) likesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool hasLiked)? likeToggled,
+    TResult? Function(List<PostComment> comments)? commentsUpdated,
+    TResult? Function(List<PostLike> likes)? likesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool hasLiked)? likeToggled,
+    TResult Function(List<PostComment> comments)? commentsUpdated,
+    TResult Function(List<PostLike> likes)? likesUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LikeToggled value) likeToggled,
+    required TResult Function(_CommentsUpdated value) commentsUpdated,
+    required TResult Function(_LikesUpdated value) likesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LikeToggled value)? likeToggled,
+    TResult? Function(_CommentsUpdated value)? commentsUpdated,
+    TResult? Function(_LikesUpdated value)? likesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LikeToggled value)? likeToggled,
+    TResult Function(_CommentsUpdated value)? commentsUpdated,
+    TResult Function(_LikesUpdated value)? likesUpdated,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ArticleEventCopyWith<ArticleEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +67,6 @@ abstract class $ArticleEventCopyWith<$Res> {
   factory $ArticleEventCopyWith(
           ArticleEvent value, $Res Function(ArticleEvent) then) =
       _$ArticleEventCopyWithImpl<$Res, ArticleEvent>;
-  @useResult
-  $Res call({bool hasLiked});
 }
 
 /// @nodoc
@@ -73,28 +78,13 @@ class _$ArticleEventCopyWithImpl<$Res, $Val extends ArticleEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? hasLiked = null,
-  }) {
-    return _then(_value.copyWith(
-      hasLiked: null == hasLiked
-          ? _value.hasLiked
-          : hasLiked // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$LikeToggledImplCopyWith<$Res>
-    implements $ArticleEventCopyWith<$Res> {
+abstract class _$$LikeToggledImplCopyWith<$Res> {
   factory _$$LikeToggledImplCopyWith(
           _$LikeToggledImpl value, $Res Function(_$LikeToggledImpl) then) =
       __$$LikeToggledImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({bool hasLiked});
 }
@@ -156,6 +146,8 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool hasLiked) likeToggled,
+    required TResult Function(List<PostComment> comments) commentsUpdated,
+    required TResult Function(List<PostLike> likes) likesUpdated,
   }) {
     return likeToggled(hasLiked);
   }
@@ -164,6 +156,8 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool hasLiked)? likeToggled,
+    TResult? Function(List<PostComment> comments)? commentsUpdated,
+    TResult? Function(List<PostLike> likes)? likesUpdated,
   }) {
     return likeToggled?.call(hasLiked);
   }
@@ -172,6 +166,8 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool hasLiked)? likeToggled,
+    TResult Function(List<PostComment> comments)? commentsUpdated,
+    TResult Function(List<PostLike> likes)? likesUpdated,
     required TResult orElse(),
   }) {
     if (likeToggled != null) {
@@ -184,6 +180,8 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LikeToggled value) likeToggled,
+    required TResult Function(_CommentsUpdated value) commentsUpdated,
+    required TResult Function(_LikesUpdated value) likesUpdated,
   }) {
     return likeToggled(this);
   }
@@ -192,6 +190,8 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LikeToggled value)? likeToggled,
+    TResult? Function(_CommentsUpdated value)? commentsUpdated,
+    TResult? Function(_LikesUpdated value)? likesUpdated,
   }) {
     return likeToggled?.call(this);
   }
@@ -200,6 +200,8 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LikeToggled value)? likeToggled,
+    TResult Function(_CommentsUpdated value)? commentsUpdated,
+    TResult Function(_LikesUpdated value)? likesUpdated,
     required TResult orElse(),
   }) {
     if (likeToggled != null) {
@@ -213,11 +215,302 @@ abstract class _LikeToggled implements ArticleEvent {
   const factory _LikeToggled({required final bool hasLiked}) =
       _$LikeToggledImpl;
 
-  @override
   bool get hasLiked;
-  @override
   @JsonKey(ignore: true)
   _$$LikeToggledImplCopyWith<_$LikeToggledImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CommentsUpdatedImplCopyWith<$Res> {
+  factory _$$CommentsUpdatedImplCopyWith(_$CommentsUpdatedImpl value,
+          $Res Function(_$CommentsUpdatedImpl) then) =
+      __$$CommentsUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PostComment> comments});
+}
+
+/// @nodoc
+class __$$CommentsUpdatedImplCopyWithImpl<$Res>
+    extends _$ArticleEventCopyWithImpl<$Res, _$CommentsUpdatedImpl>
+    implements _$$CommentsUpdatedImplCopyWith<$Res> {
+  __$$CommentsUpdatedImplCopyWithImpl(
+      _$CommentsUpdatedImpl _value, $Res Function(_$CommentsUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? comments = null,
+  }) {
+    return _then(_$CommentsUpdatedImpl(
+      null == comments
+          ? _value._comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<PostComment>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CommentsUpdatedImpl implements _CommentsUpdated {
+  const _$CommentsUpdatedImpl(final List<PostComment> comments)
+      : _comments = comments;
+
+  final List<PostComment> _comments;
+  @override
+  List<PostComment> get comments {
+    if (_comments is EqualUnmodifiableListView) return _comments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_comments);
+  }
+
+  @override
+  String toString() {
+    return 'ArticleEvent.commentsUpdated(comments: $comments)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CommentsUpdatedImpl &&
+            const DeepCollectionEquality().equals(other._comments, _comments));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_comments));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CommentsUpdatedImplCopyWith<_$CommentsUpdatedImpl> get copyWith =>
+      __$$CommentsUpdatedImplCopyWithImpl<_$CommentsUpdatedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool hasLiked) likeToggled,
+    required TResult Function(List<PostComment> comments) commentsUpdated,
+    required TResult Function(List<PostLike> likes) likesUpdated,
+  }) {
+    return commentsUpdated(comments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool hasLiked)? likeToggled,
+    TResult? Function(List<PostComment> comments)? commentsUpdated,
+    TResult? Function(List<PostLike> likes)? likesUpdated,
+  }) {
+    return commentsUpdated?.call(comments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool hasLiked)? likeToggled,
+    TResult Function(List<PostComment> comments)? commentsUpdated,
+    TResult Function(List<PostLike> likes)? likesUpdated,
+    required TResult orElse(),
+  }) {
+    if (commentsUpdated != null) {
+      return commentsUpdated(comments);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LikeToggled value) likeToggled,
+    required TResult Function(_CommentsUpdated value) commentsUpdated,
+    required TResult Function(_LikesUpdated value) likesUpdated,
+  }) {
+    return commentsUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LikeToggled value)? likeToggled,
+    TResult? Function(_CommentsUpdated value)? commentsUpdated,
+    TResult? Function(_LikesUpdated value)? likesUpdated,
+  }) {
+    return commentsUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LikeToggled value)? likeToggled,
+    TResult Function(_CommentsUpdated value)? commentsUpdated,
+    TResult Function(_LikesUpdated value)? likesUpdated,
+    required TResult orElse(),
+  }) {
+    if (commentsUpdated != null) {
+      return commentsUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CommentsUpdated implements ArticleEvent {
+  const factory _CommentsUpdated(final List<PostComment> comments) =
+      _$CommentsUpdatedImpl;
+
+  List<PostComment> get comments;
+  @JsonKey(ignore: true)
+  _$$CommentsUpdatedImplCopyWith<_$CommentsUpdatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LikesUpdatedImplCopyWith<$Res> {
+  factory _$$LikesUpdatedImplCopyWith(
+          _$LikesUpdatedImpl value, $Res Function(_$LikesUpdatedImpl) then) =
+      __$$LikesUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PostLike> likes});
+}
+
+/// @nodoc
+class __$$LikesUpdatedImplCopyWithImpl<$Res>
+    extends _$ArticleEventCopyWithImpl<$Res, _$LikesUpdatedImpl>
+    implements _$$LikesUpdatedImplCopyWith<$Res> {
+  __$$LikesUpdatedImplCopyWithImpl(
+      _$LikesUpdatedImpl _value, $Res Function(_$LikesUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? likes = null,
+  }) {
+    return _then(_$LikesUpdatedImpl(
+      null == likes
+          ? _value._likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<PostLike>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LikesUpdatedImpl implements _LikesUpdated {
+  const _$LikesUpdatedImpl(final List<PostLike> likes) : _likes = likes;
+
+  final List<PostLike> _likes;
+  @override
+  List<PostLike> get likes {
+    if (_likes is EqualUnmodifiableListView) return _likes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_likes);
+  }
+
+  @override
+  String toString() {
+    return 'ArticleEvent.likesUpdated(likes: $likes)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikesUpdatedImpl &&
+            const DeepCollectionEquality().equals(other._likes, _likes));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_likes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikesUpdatedImplCopyWith<_$LikesUpdatedImpl> get copyWith =>
+      __$$LikesUpdatedImplCopyWithImpl<_$LikesUpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool hasLiked) likeToggled,
+    required TResult Function(List<PostComment> comments) commentsUpdated,
+    required TResult Function(List<PostLike> likes) likesUpdated,
+  }) {
+    return likesUpdated(likes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool hasLiked)? likeToggled,
+    TResult? Function(List<PostComment> comments)? commentsUpdated,
+    TResult? Function(List<PostLike> likes)? likesUpdated,
+  }) {
+    return likesUpdated?.call(likes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool hasLiked)? likeToggled,
+    TResult Function(List<PostComment> comments)? commentsUpdated,
+    TResult Function(List<PostLike> likes)? likesUpdated,
+    required TResult orElse(),
+  }) {
+    if (likesUpdated != null) {
+      return likesUpdated(likes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LikeToggled value) likeToggled,
+    required TResult Function(_CommentsUpdated value) commentsUpdated,
+    required TResult Function(_LikesUpdated value) likesUpdated,
+  }) {
+    return likesUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LikeToggled value)? likeToggled,
+    TResult? Function(_CommentsUpdated value)? commentsUpdated,
+    TResult? Function(_LikesUpdated value)? likesUpdated,
+  }) {
+    return likesUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LikeToggled value)? likeToggled,
+    TResult Function(_CommentsUpdated value)? commentsUpdated,
+    TResult Function(_LikesUpdated value)? likesUpdated,
+    required TResult orElse(),
+  }) {
+    if (likesUpdated != null) {
+      return likesUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LikesUpdated implements ArticleEvent {
+  const factory _LikesUpdated(final List<PostLike> likes) = _$LikesUpdatedImpl;
+
+  List<PostLike> get likes;
+  @JsonKey(ignore: true)
+  _$$LikesUpdatedImplCopyWith<_$LikesUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -227,7 +520,9 @@ mixin _$ArticleState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)
+        success,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -235,7 +530,9 @@ mixin _$ArticleState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -243,7 +540,9 @@ mixin _$ArticleState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -333,7 +632,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)
+        success,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -344,7 +645,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -355,7 +658,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -447,7 +752,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)
+        success,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -458,7 +765,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -469,7 +778,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -527,7 +838,12 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call(
+      {String message,
+      bool hasLiked,
+      bool hasCommented,
+      int totalLikes,
+      int totalComments});
 }
 
 /// @nodoc
@@ -542,12 +858,32 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? hasLiked = null,
+    Object? hasCommented = null,
+    Object? totalLikes = null,
+    Object? totalComments = null,
   }) {
     return _then(_$SuccessImpl(
-      null == message
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      hasLiked: null == hasLiked
+          ? _value.hasLiked
+          : hasLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasCommented: null == hasCommented
+          ? _value.hasCommented
+          : hasCommented // ignore: cast_nullable_to_non_nullable
+              as bool,
+      totalLikes: null == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalComments: null == totalComments
+          ? _value.totalComments
+          : totalComments // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -555,14 +891,32 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.message);
+  const _$SuccessImpl(
+      {this.message = '',
+      this.hasLiked = false,
+      this.hasCommented = false,
+      this.totalLikes = 0,
+      this.totalComments = 0});
 
   @override
+  @JsonKey()
   final String message;
+  @override
+  @JsonKey()
+  final bool hasLiked;
+  @override
+  @JsonKey()
+  final bool hasCommented;
+  @override
+  @JsonKey()
+  final int totalLikes;
+  @override
+  @JsonKey()
+  final int totalComments;
 
   @override
   String toString() {
-    return 'ArticleState.success(message: $message)';
+    return 'ArticleState.success(message: $message, hasLiked: $hasLiked, hasCommented: $hasCommented, totalLikes: $totalLikes, totalComments: $totalComments)';
   }
 
   @override
@@ -570,11 +924,20 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.hasLiked, hasLiked) ||
+                other.hasLiked == hasLiked) &&
+            (identical(other.hasCommented, hasCommented) ||
+                other.hasCommented == hasCommented) &&
+            (identical(other.totalLikes, totalLikes) ||
+                other.totalLikes == totalLikes) &&
+            (identical(other.totalComments, totalComments) ||
+                other.totalComments == totalComments));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(
+      runtimeType, message, hasLiked, hasCommented, totalLikes, totalComments);
 
   @JsonKey(ignore: true)
   @override
@@ -587,10 +950,12 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)
+        success,
     required TResult Function(String message) failure,
   }) {
-    return success(message);
+    return success(message, hasLiked, hasCommented, totalLikes, totalComments);
   }
 
   @override
@@ -598,10 +963,13 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(message);
+    return success?.call(
+        message, hasLiked, hasCommented, totalLikes, totalComments);
   }
 
   @override
@@ -609,12 +977,15 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(message);
+      return success(
+          message, hasLiked, hasCommented, totalLikes, totalComments);
     }
     return orElse();
   }
@@ -658,9 +1029,18 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements ArticleState {
-  const factory _Success(final String message) = _$SuccessImpl;
+  const factory _Success(
+      {final String message,
+      final bool hasLiked,
+      final bool hasCommented,
+      final int totalLikes,
+      final int totalComments}) = _$SuccessImpl;
 
   String get message;
+  bool get hasLiked;
+  bool get hasCommented;
+  int get totalLikes;
+  int get totalComments;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -732,7 +1112,9 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)
+        success,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -743,7 +1125,9 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -754,7 +1138,9 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, bool hasLiked, bool hasCommented,
+            int totalLikes, int totalComments)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
