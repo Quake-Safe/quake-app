@@ -23,6 +23,7 @@ class ArticleCommentsBloc
     on<_NextPageFetched>(_onNextPageFetched);
     on<_PreviousPageFetched>(_onPreviousPageFetched);
     on<_CommentUpdated>(_onCommentUpdated);
+    on<_InsertSubscriptionRequested>(_onInsertSubscriptionRequested);
   }
   final String _articleId;
   final String? _parentId;
@@ -107,6 +108,33 @@ class ArticleCommentsBloc
         );
       },
       orElse: () {},
+    );
+  }
+
+  FutureOr<void> _onInsertSubscriptionRequested(
+    _InsertSubscriptionRequested event,
+    Emitter<ArticleCommentsState> emit,
+  ) async {
+    await _postsRepository.watchPostCommentCreate(_articleId).forEach(
+      (realtimeComment) async {
+        final response = await _postsRepository.getPostComment(
+          realtimeComment.id,
+        );
+        final comment = response.data!;
+
+        state.maybeWhen(
+          success: (paginatedComments) {
+            final comments = paginatedComments.data ?? [];
+            final updatedComments = [comment, ...comments];
+            emit(
+              ArticleCommentsState.success(
+                paginatedComments.copyWith(data: updatedComments),
+              ),
+            );
+          },
+          orElse: () {},
+        );
+      },
     );
   }
 }

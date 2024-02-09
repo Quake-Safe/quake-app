@@ -28,9 +28,6 @@ class ArticleCommentsPage extends StatelessWidget implements AutoRouteWrapper {
                   duration: const Duration(seconds: 2),
                 ),
               );
-            context.read<ArticleCommentsBloc>().add(
-                  const ArticleCommentsEvent.fetched(),
-                );
           },
           orElse: () {},
         );
@@ -82,8 +79,12 @@ class ArticleCommentsPage extends StatelessWidget implements AutoRouteWrapper {
           create: (context) => ArticleCommentsBloc(
             postsRepository: context.read(),
             articleId: articleId,
-          )..add(
+          )
+            ..add(
               const ArticleCommentsEvent.fetched(),
+            )
+            ..add(
+              const ArticleCommentsEvent.insertSubscriptionRequested(),
             ),
         ),
         BlocProvider(

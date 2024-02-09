@@ -63,7 +63,6 @@ class _ArticleCommentsListState extends State<ArticleCommentsList> {
 
             return BlocProvider.value(
               value: articleCommentBloc,
-              key: ValueKey(comment.id),
               child: BlocListener<ArticleCommentBloc, ArticleCommentState>(
                 bloc: articleCommentBloc,
                 listener: (context, state) {

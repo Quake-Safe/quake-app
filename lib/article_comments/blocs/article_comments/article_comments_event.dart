@@ -3,6 +3,8 @@ part of 'article_comments_bloc.dart';
 @freezed
 class ArticleCommentsEvent with _$ArticleCommentsEvent {
   const factory ArticleCommentsEvent.fetched() = _Fetched;
+  const factory ArticleCommentsEvent.insertSubscriptionRequested() =
+      _InsertSubscriptionRequested;
   const factory ArticleCommentsEvent.commentUpdated(
     PostComment comment,
   ) = _CommentUpdated;

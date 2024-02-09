@@ -19,6 +19,7 @@ mixin _$ArticleCommentsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetched,
+    required TResult Function() insertSubscriptionRequested,
     required TResult Function(PostComment comment) commentUpdated,
     required TResult Function(int? nextPage) nextPageFetched,
     required TResult Function(int? previousPage) previousPageFetched,
@@ -28,6 +29,7 @@ mixin _$ArticleCommentsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetched,
+    TResult? Function()? insertSubscriptionRequested,
     TResult? Function(PostComment comment)? commentUpdated,
     TResult? Function(int? nextPage)? nextPageFetched,
     TResult? Function(int? previousPage)? previousPageFetched,
@@ -37,6 +39,7 @@ mixin _$ArticleCommentsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetched,
+    TResult Function()? insertSubscriptionRequested,
     TResult Function(PostComment comment)? commentUpdated,
     TResult Function(int? nextPage)? nextPageFetched,
     TResult Function(int? previousPage)? previousPageFetched,
@@ -47,6 +50,8 @@ mixin _$ArticleCommentsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetched value) fetched,
+    required TResult Function(_InsertSubscriptionRequested value)
+        insertSubscriptionRequested,
     required TResult Function(_CommentUpdated value) commentUpdated,
     required TResult Function(_NextPageFetched value) nextPageFetched,
     required TResult Function(_PreviousPageFetched value) previousPageFetched,
@@ -56,6 +61,8 @@ mixin _$ArticleCommentsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetched value)? fetched,
+    TResult? Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult? Function(_CommentUpdated value)? commentUpdated,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
     TResult? Function(_PreviousPageFetched value)? previousPageFetched,
@@ -65,6 +72,8 @@ mixin _$ArticleCommentsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetched value)? fetched,
+    TResult Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult Function(_CommentUpdated value)? commentUpdated,
     TResult Function(_NextPageFetched value)? nextPageFetched,
     TResult Function(_PreviousPageFetched value)? previousPageFetched,
@@ -132,6 +141,7 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetched,
+    required TResult Function() insertSubscriptionRequested,
     required TResult Function(PostComment comment) commentUpdated,
     required TResult Function(int? nextPage) nextPageFetched,
     required TResult Function(int? previousPage) previousPageFetched,
@@ -144,6 +154,7 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetched,
+    TResult? Function()? insertSubscriptionRequested,
     TResult? Function(PostComment comment)? commentUpdated,
     TResult? Function(int? nextPage)? nextPageFetched,
     TResult? Function(int? previousPage)? previousPageFetched,
@@ -156,6 +167,7 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetched,
+    TResult Function()? insertSubscriptionRequested,
     TResult Function(PostComment comment)? commentUpdated,
     TResult Function(int? nextPage)? nextPageFetched,
     TResult Function(int? previousPage)? previousPageFetched,
@@ -172,6 +184,8 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetched value) fetched,
+    required TResult Function(_InsertSubscriptionRequested value)
+        insertSubscriptionRequested,
     required TResult Function(_CommentUpdated value) commentUpdated,
     required TResult Function(_NextPageFetched value) nextPageFetched,
     required TResult Function(_PreviousPageFetched value) previousPageFetched,
@@ -184,6 +198,8 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetched value)? fetched,
+    TResult? Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult? Function(_CommentUpdated value)? commentUpdated,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
     TResult? Function(_PreviousPageFetched value)? previousPageFetched,
@@ -196,6 +212,8 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetched value)? fetched,
+    TResult Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult Function(_CommentUpdated value)? commentUpdated,
     TResult Function(_NextPageFetched value)? nextPageFetched,
     TResult Function(_PreviousPageFetched value)? previousPageFetched,
@@ -211,6 +229,141 @@ class _$FetchedImpl implements _Fetched {
 
 abstract class _Fetched implements ArticleCommentsEvent {
   const factory _Fetched() = _$FetchedImpl;
+}
+
+/// @nodoc
+abstract class _$$InsertSubscriptionRequestedImplCopyWith<$Res> {
+  factory _$$InsertSubscriptionRequestedImplCopyWith(
+          _$InsertSubscriptionRequestedImpl value,
+          $Res Function(_$InsertSubscriptionRequestedImpl) then) =
+      __$$InsertSubscriptionRequestedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InsertSubscriptionRequestedImplCopyWithImpl<$Res>
+    extends _$ArticleCommentsEventCopyWithImpl<$Res,
+        _$InsertSubscriptionRequestedImpl>
+    implements _$$InsertSubscriptionRequestedImplCopyWith<$Res> {
+  __$$InsertSubscriptionRequestedImplCopyWithImpl(
+      _$InsertSubscriptionRequestedImpl _value,
+      $Res Function(_$InsertSubscriptionRequestedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InsertSubscriptionRequestedImpl
+    implements _InsertSubscriptionRequested {
+  const _$InsertSubscriptionRequestedImpl();
+
+  @override
+  String toString() {
+    return 'ArticleCommentsEvent.insertSubscriptionRequested()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InsertSubscriptionRequestedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetched,
+    required TResult Function() insertSubscriptionRequested,
+    required TResult Function(PostComment comment) commentUpdated,
+    required TResult Function(int? nextPage) nextPageFetched,
+    required TResult Function(int? previousPage) previousPageFetched,
+    required TResult Function() refresh,
+  }) {
+    return insertSubscriptionRequested();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetched,
+    TResult? Function()? insertSubscriptionRequested,
+    TResult? Function(PostComment comment)? commentUpdated,
+    TResult? Function(int? nextPage)? nextPageFetched,
+    TResult? Function(int? previousPage)? previousPageFetched,
+    TResult? Function()? refresh,
+  }) {
+    return insertSubscriptionRequested?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetched,
+    TResult Function()? insertSubscriptionRequested,
+    TResult Function(PostComment comment)? commentUpdated,
+    TResult Function(int? nextPage)? nextPageFetched,
+    TResult Function(int? previousPage)? previousPageFetched,
+    TResult Function()? refresh,
+    required TResult orElse(),
+  }) {
+    if (insertSubscriptionRequested != null) {
+      return insertSubscriptionRequested();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetched value) fetched,
+    required TResult Function(_InsertSubscriptionRequested value)
+        insertSubscriptionRequested,
+    required TResult Function(_CommentUpdated value) commentUpdated,
+    required TResult Function(_NextPageFetched value) nextPageFetched,
+    required TResult Function(_PreviousPageFetched value) previousPageFetched,
+    required TResult Function(_Refreshed value) refresh,
+  }) {
+    return insertSubscriptionRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetched value)? fetched,
+    TResult? Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
+    TResult? Function(_CommentUpdated value)? commentUpdated,
+    TResult? Function(_NextPageFetched value)? nextPageFetched,
+    TResult? Function(_PreviousPageFetched value)? previousPageFetched,
+    TResult? Function(_Refreshed value)? refresh,
+  }) {
+    return insertSubscriptionRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetched value)? fetched,
+    TResult Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
+    TResult Function(_CommentUpdated value)? commentUpdated,
+    TResult Function(_NextPageFetched value)? nextPageFetched,
+    TResult Function(_PreviousPageFetched value)? previousPageFetched,
+    TResult Function(_Refreshed value)? refresh,
+    required TResult orElse(),
+  }) {
+    if (insertSubscriptionRequested != null) {
+      return insertSubscriptionRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InsertSubscriptionRequested implements ArticleCommentsEvent {
+  const factory _InsertSubscriptionRequested() =
+      _$InsertSubscriptionRequestedImpl;
 }
 
 /// @nodoc
@@ -289,6 +442,7 @@ class _$CommentUpdatedImpl implements _CommentUpdated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetched,
+    required TResult Function() insertSubscriptionRequested,
     required TResult Function(PostComment comment) commentUpdated,
     required TResult Function(int? nextPage) nextPageFetched,
     required TResult Function(int? previousPage) previousPageFetched,
@@ -301,6 +455,7 @@ class _$CommentUpdatedImpl implements _CommentUpdated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetched,
+    TResult? Function()? insertSubscriptionRequested,
     TResult? Function(PostComment comment)? commentUpdated,
     TResult? Function(int? nextPage)? nextPageFetched,
     TResult? Function(int? previousPage)? previousPageFetched,
@@ -313,6 +468,7 @@ class _$CommentUpdatedImpl implements _CommentUpdated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetched,
+    TResult Function()? insertSubscriptionRequested,
     TResult Function(PostComment comment)? commentUpdated,
     TResult Function(int? nextPage)? nextPageFetched,
     TResult Function(int? previousPage)? previousPageFetched,
@@ -329,6 +485,8 @@ class _$CommentUpdatedImpl implements _CommentUpdated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetched value) fetched,
+    required TResult Function(_InsertSubscriptionRequested value)
+        insertSubscriptionRequested,
     required TResult Function(_CommentUpdated value) commentUpdated,
     required TResult Function(_NextPageFetched value) nextPageFetched,
     required TResult Function(_PreviousPageFetched value) previousPageFetched,
@@ -341,6 +499,8 @@ class _$CommentUpdatedImpl implements _CommentUpdated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetched value)? fetched,
+    TResult? Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult? Function(_CommentUpdated value)? commentUpdated,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
     TResult? Function(_PreviousPageFetched value)? previousPageFetched,
@@ -353,6 +513,8 @@ class _$CommentUpdatedImpl implements _CommentUpdated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetched value)? fetched,
+    TResult Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult Function(_CommentUpdated value)? commentUpdated,
     TResult Function(_NextPageFetched value)? nextPageFetched,
     TResult Function(_PreviousPageFetched value)? previousPageFetched,
@@ -443,6 +605,7 @@ class _$NextPageFetchedImpl implements _NextPageFetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetched,
+    required TResult Function() insertSubscriptionRequested,
     required TResult Function(PostComment comment) commentUpdated,
     required TResult Function(int? nextPage) nextPageFetched,
     required TResult Function(int? previousPage) previousPageFetched,
@@ -455,6 +618,7 @@ class _$NextPageFetchedImpl implements _NextPageFetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetched,
+    TResult? Function()? insertSubscriptionRequested,
     TResult? Function(PostComment comment)? commentUpdated,
     TResult? Function(int? nextPage)? nextPageFetched,
     TResult? Function(int? previousPage)? previousPageFetched,
@@ -467,6 +631,7 @@ class _$NextPageFetchedImpl implements _NextPageFetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetched,
+    TResult Function()? insertSubscriptionRequested,
     TResult Function(PostComment comment)? commentUpdated,
     TResult Function(int? nextPage)? nextPageFetched,
     TResult Function(int? previousPage)? previousPageFetched,
@@ -483,6 +648,8 @@ class _$NextPageFetchedImpl implements _NextPageFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetched value) fetched,
+    required TResult Function(_InsertSubscriptionRequested value)
+        insertSubscriptionRequested,
     required TResult Function(_CommentUpdated value) commentUpdated,
     required TResult Function(_NextPageFetched value) nextPageFetched,
     required TResult Function(_PreviousPageFetched value) previousPageFetched,
@@ -495,6 +662,8 @@ class _$NextPageFetchedImpl implements _NextPageFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetched value)? fetched,
+    TResult? Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult? Function(_CommentUpdated value)? commentUpdated,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
     TResult? Function(_PreviousPageFetched value)? previousPageFetched,
@@ -507,6 +676,8 @@ class _$NextPageFetchedImpl implements _NextPageFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetched value)? fetched,
+    TResult Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult Function(_CommentUpdated value)? commentUpdated,
     TResult Function(_NextPageFetched value)? nextPageFetched,
     TResult Function(_PreviousPageFetched value)? previousPageFetched,
@@ -596,6 +767,7 @@ class _$PreviousPageFetchedImpl implements _PreviousPageFetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetched,
+    required TResult Function() insertSubscriptionRequested,
     required TResult Function(PostComment comment) commentUpdated,
     required TResult Function(int? nextPage) nextPageFetched,
     required TResult Function(int? previousPage) previousPageFetched,
@@ -608,6 +780,7 @@ class _$PreviousPageFetchedImpl implements _PreviousPageFetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetched,
+    TResult? Function()? insertSubscriptionRequested,
     TResult? Function(PostComment comment)? commentUpdated,
     TResult? Function(int? nextPage)? nextPageFetched,
     TResult? Function(int? previousPage)? previousPageFetched,
@@ -620,6 +793,7 @@ class _$PreviousPageFetchedImpl implements _PreviousPageFetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetched,
+    TResult Function()? insertSubscriptionRequested,
     TResult Function(PostComment comment)? commentUpdated,
     TResult Function(int? nextPage)? nextPageFetched,
     TResult Function(int? previousPage)? previousPageFetched,
@@ -636,6 +810,8 @@ class _$PreviousPageFetchedImpl implements _PreviousPageFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetched value) fetched,
+    required TResult Function(_InsertSubscriptionRequested value)
+        insertSubscriptionRequested,
     required TResult Function(_CommentUpdated value) commentUpdated,
     required TResult Function(_NextPageFetched value) nextPageFetched,
     required TResult Function(_PreviousPageFetched value) previousPageFetched,
@@ -648,6 +824,8 @@ class _$PreviousPageFetchedImpl implements _PreviousPageFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetched value)? fetched,
+    TResult? Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult? Function(_CommentUpdated value)? commentUpdated,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
     TResult? Function(_PreviousPageFetched value)? previousPageFetched,
@@ -660,6 +838,8 @@ class _$PreviousPageFetchedImpl implements _PreviousPageFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetched value)? fetched,
+    TResult Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult Function(_CommentUpdated value)? commentUpdated,
     TResult Function(_NextPageFetched value)? nextPageFetched,
     TResult Function(_PreviousPageFetched value)? previousPageFetched,
@@ -722,6 +902,7 @@ class _$RefreshedImpl implements _Refreshed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetched,
+    required TResult Function() insertSubscriptionRequested,
     required TResult Function(PostComment comment) commentUpdated,
     required TResult Function(int? nextPage) nextPageFetched,
     required TResult Function(int? previousPage) previousPageFetched,
@@ -734,6 +915,7 @@ class _$RefreshedImpl implements _Refreshed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetched,
+    TResult? Function()? insertSubscriptionRequested,
     TResult? Function(PostComment comment)? commentUpdated,
     TResult? Function(int? nextPage)? nextPageFetched,
     TResult? Function(int? previousPage)? previousPageFetched,
@@ -746,6 +928,7 @@ class _$RefreshedImpl implements _Refreshed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetched,
+    TResult Function()? insertSubscriptionRequested,
     TResult Function(PostComment comment)? commentUpdated,
     TResult Function(int? nextPage)? nextPageFetched,
     TResult Function(int? previousPage)? previousPageFetched,
@@ -762,6 +945,8 @@ class _$RefreshedImpl implements _Refreshed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetched value) fetched,
+    required TResult Function(_InsertSubscriptionRequested value)
+        insertSubscriptionRequested,
     required TResult Function(_CommentUpdated value) commentUpdated,
     required TResult Function(_NextPageFetched value) nextPageFetched,
     required TResult Function(_PreviousPageFetched value) previousPageFetched,
@@ -774,6 +959,8 @@ class _$RefreshedImpl implements _Refreshed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetched value)? fetched,
+    TResult? Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult? Function(_CommentUpdated value)? commentUpdated,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
     TResult? Function(_PreviousPageFetched value)? previousPageFetched,
@@ -786,6 +973,8 @@ class _$RefreshedImpl implements _Refreshed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetched value)? fetched,
+    TResult Function(_InsertSubscriptionRequested value)?
+        insertSubscriptionRequested,
     TResult Function(_CommentUpdated value)? commentUpdated,
     TResult Function(_NextPageFetched value)? nextPageFetched,
     TResult Function(_PreviousPageFetched value)? previousPageFetched,

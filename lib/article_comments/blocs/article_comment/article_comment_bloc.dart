@@ -44,7 +44,7 @@ class ArticleCommentBloc
       emit(const ArticleCommentState.loading());
 
       await _postsRepository.likeComment(event.commentId);
-      final response = await _postsRepository.getComment(event.commentId);
+      final response = await _postsRepository.getPostComment(event.commentId);
 
       emit(ArticleCommentState.success('Comment liked', response.data));
     } catch (e) {
@@ -61,7 +61,7 @@ class ArticleCommentBloc
 
       await _postsRepository.unlikeComment(event.commentId);
 
-      final response = await _postsRepository.getComment(event.commentId);
+      final response = await _postsRepository.getPostComment(event.commentId);
 
       emit(ArticleCommentState.success('Comment unliked', response.data));
     } catch (e) {

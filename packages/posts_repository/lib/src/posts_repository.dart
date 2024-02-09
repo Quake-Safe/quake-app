@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:posts_repository/posts_repository.dart';
 import 'package:quake_safe_platform_client/quake_safe_platform_client.dart';
 import 'package:supabase/supabase.dart';
@@ -52,6 +54,32 @@ class PostsRepository {
         .map((event) {
           return event.map(RealtimePostComment.fromJson).toList();
         });
+  }
+
+  /// Returns a stream of [RealtimePostComment] which updates when a new comment
+  /// is added to the post with the given [postId]. This is useful for real-time
+  /// updates when a new comment is added to a post.
+  Stream<RealtimePostComment> watchPostCommentCreate(String postId) {
+    final controller = StreamController<RealtimePostComment>.broadcast();
+    final channel = _supabaseClient
+        .channel('post_comments:$postId')
+        .onPostgresChanges(
+          event: PostgresChangeEvent.insert,
+          schema: 'public',
+          table: _postCommentsTable,
+          callback: (payload) {
+            controller.add(RealtimePostComment.fromJson(payload.newRecord));
+          },
+        )
+        .subscribe();
+
+    /// Cancels the subscription when the stream is cancelled.
+    /// This is important to prevent memory leaks.
+    controller.onCancel = () async {
+      await channel.unsubscribe();
+    };
+
+    return controller.stream;
   }
 
   /// Fetches all posts from the platform.
@@ -124,7 +152,7 @@ class PostsRepository {
   }
 
   /// Gets a comment with the given [commentId].
-  Future<ApiResponse<PostComment>> getComment(String commentId) async {
+  Future<ApiResponse<PostComment>> getPostComment(String commentId) async {
     final response = await _client
         .get<Map<String, dynamic>>(
           '/comments/$commentId',
