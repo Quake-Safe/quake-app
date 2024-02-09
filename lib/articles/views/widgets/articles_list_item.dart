@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:quake_safe_app/articles/blocs/blocs.dart';
 import 'package:quake_safe_app/articles/views/widgets/articles_list_item_actions.dart';
 import 'package:quake_safe_app/articles/views/widgets/articles_list_item_author_header.dart';
 import 'package:quake_safe_app/articles/views/widgets/widgets.dart';
+import 'package:quake_safe_app/router/router.gr.dart';
 
 class ArticlesListItem extends StatelessWidget {
   const ArticlesListItem({
@@ -132,7 +134,13 @@ class ArticlesListItem extends StatelessWidget {
                                 },
                                 onBookmarkPressed: () {},
                                 onNavigatePressed: () {},
-                                onCommentsPressed: () {},
+                                onCommentsPressed: () {
+                                  AutoRouter.of(context).push(
+                                    ArticleCommentsRoute(
+                                      articleId: post.id,
+                                    ),
+                                  );
+                                },
                                 onReadMorePressed: () {},
                               );
                             },

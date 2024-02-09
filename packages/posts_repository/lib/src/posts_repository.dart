@@ -44,14 +44,35 @@ class PostsRepository {
 
   /// Returns a stream of [PostComment] which updates when a change occurs in
   /// the post_comments table.
-  Stream<List<PostComment>> watchPostComments(String postId) {
+  Stream<List<RealtimePostComment>> watchPostComments(String postId) {
     return _supabaseClient
         .from(_postCommentsTable)
         .stream(primaryKey: ['id'])
         .eq('postId', postId)
         .map((event) {
-          return event.map(PostComment.fromJson).toList();
+          return event.map(RealtimePostComment.fromJson).toList();
         });
+  }
+
+  /// Fetches all posts from the platform.
+  Future<ApiPaginatedResponse<List<Post>>> getPosts() async {
+    final response = await _client.get<Map<String, dynamic>>('/post');
+
+    return ApiPaginatedResponse.fromJson(response!, (data) {
+      return (data! as List).map((dynamic json) {
+        return Post.fromJson(json as Map<String, dynamic>);
+      }).toList();
+    });
+  }
+
+  /// Likes a post
+  Future<void> likePost(String postId) async {
+    await _client.post<Map<String, dynamic>>('/post/$postId/like');
+  }
+
+  /// Unlikes a post
+  Future<void> unlikePost(String postId) async {
+    await _client.delete<Map<String, dynamic>>('/post/$postId/like');
   }
 
   /// Returns a list of [PostComment] for the given [postId].
@@ -77,24 +98,73 @@ class PostsRepository {
     });
   }
 
-  /// Fetches all posts from the platform.
-  Future<ApiPaginatedResponse<List<Post>>> getPosts() async {
-    final response = await _client.get<Map<String, dynamic>>('/post');
+  /// Adds a comment to the given [postId].
+  /// If [parentId] is provided, the comment will be a reply to the comment
+  /// with the given [parentId].
+  Future<ApiResponse<PostComment>> addComment({
+    required String content,
+    required String postId,
+    String? parentId,
+  }) async {
+    final response = await _client.post<Map<String, dynamic>>(
+      '/comments',
+      data: {
+        'content': content,
+        'postId': postId,
+        if (parentId != null) 'parentId': parentId,
+      },
+    ).then(
+      (value) => ApiResponse.fromJson(
+        value!,
+        (data) => PostComment.fromJson(data! as Map<String, dynamic>),
+      ),
+    );
 
-    return ApiPaginatedResponse.fromJson(response!, (data) {
-      return (data! as List).map((dynamic json) {
-        return Post.fromJson(json as Map<String, dynamic>);
-      }).toList();
-    });
+    return response;
   }
 
-  /// Likes a post
-  Future<void> likePost(String postId) async {
-    await _client.post<Map<String, dynamic>>('/post/$postId/like');
+  /// Gets a comment with the given [commentId].
+  Future<ApiResponse<PostComment>> getComment(String commentId) async {
+    final response = await _client
+        .get<Map<String, dynamic>>(
+          '/comments/$commentId',
+        )
+        .then(
+          (value) => ApiResponse.fromJson(
+            value!,
+            (data) => PostComment.fromJson(data! as Map<String, dynamic>),
+          ),
+        );
+
+    return response;
   }
 
-  /// Unlikes a post
-  Future<void> unlikePost(String postId) async {
-    await _client.delete<Map<String, dynamic>>('/post/$postId/like');
+  /// Deletes a comment with the given [commentId].
+  /// If the comment has replies, the replies will also be deleted.
+  Future<ApiResponse<PostComment>> deleteComment(String commentId) async {
+    final response = await _client
+        .delete<Map<String, dynamic>>(
+          '/comments/$commentId',
+        )
+        .then(
+          (value) => ApiResponse.fromJson(
+            value!,
+            (data) => PostComment.fromJson(
+              data! as Map<String, dynamic>,
+            ),
+          ),
+        );
+
+    return response;
+  }
+
+  /// Likes a comment with the given [commentId].
+  Future<void> likeComment(String commentId) async {
+    await _client.post<Map<String, dynamic>>('/comments/$commentId/like');
+  }
+
+  /// Unlikes a comment with the given [commentId].
+  Future<void> unlikeComment(String commentId) async {
+    await _client.delete<Map<String, dynamic>>('/comments/$commentId/like');
   }
 }

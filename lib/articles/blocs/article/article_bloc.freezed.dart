@@ -19,21 +19,22 @@ mixin _$ArticleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool hasLiked) likeToggled,
-    required TResult Function(List<PostComment> comments) commentsUpdated,
+    required TResult Function(List<RealtimePostComment> comments)
+        commentsUpdated,
     required TResult Function(List<PostLike> likes) likesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool hasLiked)? likeToggled,
-    TResult? Function(List<PostComment> comments)? commentsUpdated,
+    TResult? Function(List<RealtimePostComment> comments)? commentsUpdated,
     TResult? Function(List<PostLike> likes)? likesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool hasLiked)? likeToggled,
-    TResult Function(List<PostComment> comments)? commentsUpdated,
+    TResult Function(List<RealtimePostComment> comments)? commentsUpdated,
     TResult Function(List<PostLike> likes)? likesUpdated,
     required TResult orElse(),
   }) =>
@@ -146,7 +147,8 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool hasLiked) likeToggled,
-    required TResult Function(List<PostComment> comments) commentsUpdated,
+    required TResult Function(List<RealtimePostComment> comments)
+        commentsUpdated,
     required TResult Function(List<PostLike> likes) likesUpdated,
   }) {
     return likeToggled(hasLiked);
@@ -156,7 +158,7 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool hasLiked)? likeToggled,
-    TResult? Function(List<PostComment> comments)? commentsUpdated,
+    TResult? Function(List<RealtimePostComment> comments)? commentsUpdated,
     TResult? Function(List<PostLike> likes)? likesUpdated,
   }) {
     return likeToggled?.call(hasLiked);
@@ -166,7 +168,7 @@ class _$LikeToggledImpl implements _LikeToggled {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool hasLiked)? likeToggled,
-    TResult Function(List<PostComment> comments)? commentsUpdated,
+    TResult Function(List<RealtimePostComment> comments)? commentsUpdated,
     TResult Function(List<PostLike> likes)? likesUpdated,
     required TResult orElse(),
   }) {
@@ -227,7 +229,7 @@ abstract class _$$CommentsUpdatedImplCopyWith<$Res> {
           $Res Function(_$CommentsUpdatedImpl) then) =
       __$$CommentsUpdatedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PostComment> comments});
+  $Res call({List<RealtimePostComment> comments});
 }
 
 /// @nodoc
@@ -247,7 +249,7 @@ class __$$CommentsUpdatedImplCopyWithImpl<$Res>
       null == comments
           ? _value._comments
           : comments // ignore: cast_nullable_to_non_nullable
-              as List<PostComment>,
+              as List<RealtimePostComment>,
     ));
   }
 }
@@ -255,12 +257,12 @@ class __$$CommentsUpdatedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CommentsUpdatedImpl implements _CommentsUpdated {
-  const _$CommentsUpdatedImpl(final List<PostComment> comments)
+  const _$CommentsUpdatedImpl(final List<RealtimePostComment> comments)
       : _comments = comments;
 
-  final List<PostComment> _comments;
+  final List<RealtimePostComment> _comments;
   @override
-  List<PostComment> get comments {
+  List<RealtimePostComment> get comments {
     if (_comments is EqualUnmodifiableListView) return _comments;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_comments);
@@ -294,7 +296,8 @@ class _$CommentsUpdatedImpl implements _CommentsUpdated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool hasLiked) likeToggled,
-    required TResult Function(List<PostComment> comments) commentsUpdated,
+    required TResult Function(List<RealtimePostComment> comments)
+        commentsUpdated,
     required TResult Function(List<PostLike> likes) likesUpdated,
   }) {
     return commentsUpdated(comments);
@@ -304,7 +307,7 @@ class _$CommentsUpdatedImpl implements _CommentsUpdated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool hasLiked)? likeToggled,
-    TResult? Function(List<PostComment> comments)? commentsUpdated,
+    TResult? Function(List<RealtimePostComment> comments)? commentsUpdated,
     TResult? Function(List<PostLike> likes)? likesUpdated,
   }) {
     return commentsUpdated?.call(comments);
@@ -314,7 +317,7 @@ class _$CommentsUpdatedImpl implements _CommentsUpdated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool hasLiked)? likeToggled,
-    TResult Function(List<PostComment> comments)? commentsUpdated,
+    TResult Function(List<RealtimePostComment> comments)? commentsUpdated,
     TResult Function(List<PostLike> likes)? likesUpdated,
     required TResult orElse(),
   }) {
@@ -360,10 +363,10 @@ class _$CommentsUpdatedImpl implements _CommentsUpdated {
 }
 
 abstract class _CommentsUpdated implements ArticleEvent {
-  const factory _CommentsUpdated(final List<PostComment> comments) =
+  const factory _CommentsUpdated(final List<RealtimePostComment> comments) =
       _$CommentsUpdatedImpl;
 
-  List<PostComment> get comments;
+  List<RealtimePostComment> get comments;
   @JsonKey(ignore: true)
   _$$CommentsUpdatedImplCopyWith<_$CommentsUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -440,7 +443,8 @@ class _$LikesUpdatedImpl implements _LikesUpdated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool hasLiked) likeToggled,
-    required TResult Function(List<PostComment> comments) commentsUpdated,
+    required TResult Function(List<RealtimePostComment> comments)
+        commentsUpdated,
     required TResult Function(List<PostLike> likes) likesUpdated,
   }) {
     return likesUpdated(likes);
@@ -450,7 +454,7 @@ class _$LikesUpdatedImpl implements _LikesUpdated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool hasLiked)? likeToggled,
-    TResult? Function(List<PostComment> comments)? commentsUpdated,
+    TResult? Function(List<RealtimePostComment> comments)? commentsUpdated,
     TResult? Function(List<PostLike> likes)? likesUpdated,
   }) {
     return likesUpdated?.call(likes);
@@ -460,7 +464,7 @@ class _$LikesUpdatedImpl implements _LikesUpdated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool hasLiked)? likeToggled,
-    TResult Function(List<PostComment> comments)? commentsUpdated,
+    TResult Function(List<RealtimePostComment> comments)? commentsUpdated,
     TResult Function(List<PostLike> likes)? likesUpdated,
     required TResult orElse(),
   }) {

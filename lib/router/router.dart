@@ -7,6 +7,10 @@ class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
+          page: ArticleCommentsRoute.page,
+          path: '/article-comments/:articleId',
+        ),
+        AutoRoute(
           page: HomeRoute.page,
           path: '/home',
           children: [

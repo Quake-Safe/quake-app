@@ -39,7 +39,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
   final PostsRepository _postsRepository;
 
   StreamSubscription<List<PostLike>>? _likesSubscription;
-  StreamSubscription<List<PostComment>>? _commentsSubscription;
+  StreamSubscription<List<RealtimePostComment>>? _commentsSubscription;
 
   @override
   Future<void> close() {
