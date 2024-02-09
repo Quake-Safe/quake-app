@@ -23,11 +23,17 @@ mixin _$PostComment {
   String get id => throw _privateConstructorUsedError;
   String get postId => throw _privateConstructorUsedError;
   String get authorId => throw _privateConstructorUsedError;
+
+  /// This can be null if the comment was called from the realtime database.
+  PostCommentAuthor? get author => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   @JsonKey(fromJson: DateTime.parse)
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(fromJson: DateTime.parse)
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  bool get hasLiked => throw _privateConstructorUsedError;
+  int get totalLikes => throw _privateConstructorUsedError;
+  int get totalReplies => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,9 +51,15 @@ abstract class $PostCommentCopyWith<$Res> {
       {String id,
       String postId,
       String authorId,
+      PostCommentAuthor? author,
       String content,
       @JsonKey(fromJson: DateTime.parse) DateTime createdAt,
-      @JsonKey(fromJson: DateTime.parse) DateTime updatedAt});
+      @JsonKey(fromJson: DateTime.parse) DateTime updatedAt,
+      bool hasLiked,
+      int totalLikes,
+      int totalReplies});
+
+  $PostCommentAuthorCopyWith<$Res>? get author;
 }
 
 /// @nodoc
@@ -66,9 +78,13 @@ class _$PostCommentCopyWithImpl<$Res, $Val extends PostComment>
     Object? id = null,
     Object? postId = null,
     Object? authorId = null,
+    Object? author = freezed,
     Object? content = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? hasLiked = null,
+    Object? totalLikes = null,
+    Object? totalReplies = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -83,6 +99,10 @@ class _$PostCommentCopyWithImpl<$Res, $Val extends PostComment>
           ? _value.authorId
           : authorId // ignore: cast_nullable_to_non_nullable
               as String,
+      author: freezed == author
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as PostCommentAuthor?,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -95,7 +115,31 @@ class _$PostCommentCopyWithImpl<$Res, $Val extends PostComment>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      hasLiked: null == hasLiked
+          ? _value.hasLiked
+          : hasLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
+      totalLikes: null == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalReplies: null == totalReplies
+          ? _value.totalReplies
+          : totalReplies // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PostCommentAuthorCopyWith<$Res>? get author {
+    if (_value.author == null) {
+      return null;
+    }
+
+    return $PostCommentAuthorCopyWith<$Res>(_value.author!, (value) {
+      return _then(_value.copyWith(author: value) as $Val);
+    });
   }
 }
 
@@ -111,9 +155,16 @@ abstract class _$$PostCommentImplCopyWith<$Res>
       {String id,
       String postId,
       String authorId,
+      PostCommentAuthor? author,
       String content,
       @JsonKey(fromJson: DateTime.parse) DateTime createdAt,
-      @JsonKey(fromJson: DateTime.parse) DateTime updatedAt});
+      @JsonKey(fromJson: DateTime.parse) DateTime updatedAt,
+      bool hasLiked,
+      int totalLikes,
+      int totalReplies});
+
+  @override
+  $PostCommentAuthorCopyWith<$Res>? get author;
 }
 
 /// @nodoc
@@ -130,9 +181,13 @@ class __$$PostCommentImplCopyWithImpl<$Res>
     Object? id = null,
     Object? postId = null,
     Object? authorId = null,
+    Object? author = freezed,
     Object? content = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? hasLiked = null,
+    Object? totalLikes = null,
+    Object? totalReplies = null,
   }) {
     return _then(_$PostCommentImpl(
       id: null == id
@@ -147,6 +202,10 @@ class __$$PostCommentImplCopyWithImpl<$Res>
           ? _value.authorId
           : authorId // ignore: cast_nullable_to_non_nullable
               as String,
+      author: freezed == author
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as PostCommentAuthor?,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -159,20 +218,37 @@ class __$$PostCommentImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      hasLiked: null == hasLiked
+          ? _value.hasLiked
+          : hasLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
+      totalLikes: null == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalReplies: null == totalReplies
+          ? _value.totalReplies
+          : totalReplies // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$PostCommentImpl extends _PostComment {
   const _$PostCommentImpl(
       {required this.id,
       required this.postId,
       required this.authorId,
+      required this.author,
       required this.content,
       @JsonKey(fromJson: DateTime.parse) required this.createdAt,
-      @JsonKey(fromJson: DateTime.parse) required this.updatedAt})
+      @JsonKey(fromJson: DateTime.parse) required this.updatedAt,
+      this.hasLiked = false,
+      this.totalLikes = 0,
+      this.totalReplies = 0})
       : super._();
 
   factory _$PostCommentImpl.fromJson(Map<String, dynamic> json) =>
@@ -184,6 +260,10 @@ class _$PostCommentImpl extends _PostComment {
   final String postId;
   @override
   final String authorId;
+
+  /// This can be null if the comment was called from the realtime database.
+  @override
+  final PostCommentAuthor? author;
   @override
   final String content;
   @override
@@ -192,10 +272,19 @@ class _$PostCommentImpl extends _PostComment {
   @override
   @JsonKey(fromJson: DateTime.parse)
   final DateTime updatedAt;
+  @override
+  @JsonKey()
+  final bool hasLiked;
+  @override
+  @JsonKey()
+  final int totalLikes;
+  @override
+  @JsonKey()
+  final int totalReplies;
 
   @override
   String toString() {
-    return 'PostComment(id: $id, postId: $postId, authorId: $authorId, content: $content, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'PostComment(id: $id, postId: $postId, authorId: $authorId, author: $author, content: $content, createdAt: $createdAt, updatedAt: $updatedAt, hasLiked: $hasLiked, totalLikes: $totalLikes, totalReplies: $totalReplies)';
   }
 
   @override
@@ -207,17 +296,24 @@ class _$PostCommentImpl extends _PostComment {
             (identical(other.postId, postId) || other.postId == postId) &&
             (identical(other.authorId, authorId) ||
                 other.authorId == authorId) &&
+            (identical(other.author, author) || other.author == author) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.hasLiked, hasLiked) ||
+                other.hasLiked == hasLiked) &&
+            (identical(other.totalLikes, totalLikes) ||
+                other.totalLikes == totalLikes) &&
+            (identical(other.totalReplies, totalReplies) ||
+                other.totalReplies == totalReplies));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, postId, authorId, content, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, postId, authorId, author,
+      content, createdAt, updatedAt, hasLiked, totalLikes, totalReplies);
 
   @JsonKey(ignore: true)
   @override
@@ -238,10 +334,13 @@ abstract class _PostComment extends PostComment {
       {required final String id,
       required final String postId,
       required final String authorId,
+      required final PostCommentAuthor? author,
       required final String content,
       @JsonKey(fromJson: DateTime.parse) required final DateTime createdAt,
-      @JsonKey(fromJson: DateTime.parse)
-      required final DateTime updatedAt}) = _$PostCommentImpl;
+      @JsonKey(fromJson: DateTime.parse) required final DateTime updatedAt,
+      final bool hasLiked,
+      final int totalLikes,
+      final int totalReplies}) = _$PostCommentImpl;
   const _PostComment._() : super._();
 
   factory _PostComment.fromJson(Map<String, dynamic> json) =
@@ -254,6 +353,10 @@ abstract class _PostComment extends PostComment {
   @override
   String get authorId;
   @override
+
+  /// This can be null if the comment was called from the realtime database.
+  PostCommentAuthor? get author;
+  @override
   String get content;
   @override
   @JsonKey(fromJson: DateTime.parse)
@@ -261,6 +364,12 @@ abstract class _PostComment extends PostComment {
   @override
   @JsonKey(fromJson: DateTime.parse)
   DateTime get updatedAt;
+  @override
+  bool get hasLiked;
+  @override
+  int get totalLikes;
+  @override
+  int get totalReplies;
   @override
   @JsonKey(ignore: true)
   _$$PostCommentImplCopyWith<_$PostCommentImpl> get copyWith =>

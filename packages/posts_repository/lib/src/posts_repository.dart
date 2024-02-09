@@ -17,7 +17,7 @@ class PostsRepository {
   final QuakeSafePlatformClient _client;
 
   static const _postTable = 'posts';
-  static const _postLikesTable = 'post_likes';
+  static const _userLikesTable = 'user_likes';
   static const _postCommentsTable = 'post_comments';
 
   /// Returns a stream of [RealtimePost] which updates when a change occurs in
@@ -34,7 +34,7 @@ class PostsRepository {
   /// the post_likes table.
   Stream<List<PostLike>> watchPostLikes(String postId) {
     return _supabaseClient
-        .from(_postLikesTable)
+        .from(_userLikesTable)
         .stream(primaryKey: ['id'])
         .eq('postId', postId)
         .map((event) {
@@ -54,16 +54,38 @@ class PostsRepository {
         });
   }
 
+  /// Returns a list of [PostComment] for the given [postId].
+  Future<ApiPaginatedResponse<List<PostComment>>> getPostComments({
+    required String postId,
+    int page = 1,
+    int limit = 10,
+    String? parentId,
+  }) async {
+    final response = await _client.get<Map<String, dynamic>>(
+      '/comments',
+      queryParameters: {
+        'page': page,
+        'limit': limit,
+        if (parentId != null) 'parentId': parentId,
+      },
+    );
+
+    return ApiPaginatedResponse.fromJson(response!, (data) {
+      return (data! as List).map((dynamic json) {
+        return PostComment.fromJson(json as Map<String, dynamic>);
+      }).toList();
+    });
+  }
+
   /// Fetches all posts from the platform.
-  Future<List<Post>> getPosts() async {
+  Future<ApiPaginatedResponse<List<Post>>> getPosts() async {
     final response = await _client.get<Map<String, dynamic>>('/post');
 
-    final data = response!['data'] as List<dynamic>;
-    final posts = data.map((dynamic json) {
-      return Post.fromJson(json as Map<String, dynamic>);
-    }).toList();
-
-    return posts;
+    return ApiPaginatedResponse.fromJson(response!, (data) {
+      return (data! as List).map((dynamic json) {
+        return Post.fromJson(json as Map<String, dynamic>);
+      }).toList();
+    });
   }
 
   /// Likes a post

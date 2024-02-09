@@ -11,10 +11,13 @@ import 'package:quake_safe_app/app/bloc/app_bloc.dart';
 import 'package:quake_safe_app/home/home.dart';
 import 'package:quake_safe_app/signin/views/signin_page.dart';
 import 'package:quake_safe_app/splash/splash.dart';
+import 'package:quake_safe_platform_client/quake_safe_platform_client.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:user_repository/user_repository.dart';
 
 class MockUser extends Mock implements User {}
+
+class MockUserProfile extends Mock implements UserProfile {}
 
 class MockSession extends Mock implements Session {}
 
@@ -60,6 +63,7 @@ void main() {
     late PostsRepository postsRepository;
     late AppBloc appBloc;
     late User user;
+    late UserProfile userProfile;
     late Session session;
 
     setUpAll(() {
@@ -71,6 +75,7 @@ void main() {
       postsRepository = MockPostsRepository();
       appBloc = MockAppBloc();
       user = MockUser();
+      userProfile = MockUserProfile();
       session = MockSession();
 
       when(() => session.user).thenReturn(user);
@@ -121,11 +126,16 @@ void main() {
       whenListen(
         appBloc,
         Stream.fromIterable(
-          [const AppState.unknown(), AppState.authenticated(user)],
+          [const AppState.unknown(), AppState.authenticated(userProfile)],
         ),
       );
 
-      when(() => postsRepository.getPosts()).thenAnswer((_) async => []);
+      when(() => postsRepository.getPosts()).thenAnswer(
+        (_) async => const ApiPaginatedResponse(
+          status: '',
+          message: '',
+        ),
+      );
 
       await tester.pumpWidget(
         MultiRepositoryProvider(

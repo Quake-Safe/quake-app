@@ -28,8 +28,9 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
   ) async {
     try {
       emit(const ArticlesState.loading());
-      final posts = await _postsRepository.getPosts();
-      emit(ArticlesState.success(posts));
+      final response = await _postsRepository.getPosts();
+
+      emit(ArticlesState.success(response.data ?? []));
     } catch (e) {
       emit(ArticlesState.failure(e.toString()));
     }
@@ -40,8 +41,8 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
     Emitter<ArticlesState> emit,
   ) async {
     try {
-      final posts = await _postsRepository.getPosts();
-      emit(ArticlesState.success(posts));
+      final response = await _postsRepository.getPosts();
+      emit(ArticlesState.success(response.data ?? []));
     } catch (e) {
       emit(ArticlesState.failure(e.toString()));
     }

@@ -743,8 +743,6 @@ abstract class _$$AuthenticatedImplCopyWith<$Res> {
       __$$AuthenticatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UserProfile user});
-
-  $UserProfileCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -758,22 +756,14 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
   }) {
     return _then(_$AuthenticatedImpl(
-      null == user
+      freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserProfile,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserProfileCopyWith<$Res> get user {
-    return $UserProfileCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
   }
 }
 
@@ -795,11 +785,12 @@ class _$AuthenticatedImpl implements _Authenticated {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthenticatedImpl &&
-            (identical(other.user, user) || other.user == user));
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override

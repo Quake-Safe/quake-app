@@ -46,7 +46,6 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     _likesSubscription?.cancel();
     _commentsSubscription?.cancel();
 
-    print('ArticleBloc closed');
     return super.close();
   }
 
