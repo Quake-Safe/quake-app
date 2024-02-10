@@ -17,6 +17,7 @@ class ArticleCommentBloc
     on<_CommentDeleted>(_onCommentDeleted);
     on<_CommentLiked>(_onCommentLiked);
     on<_CommentUnliked>(_onCommentUnliked);
+    on<_SubscriptionRequested>(_onSubscriptionRequested);
   }
 
   final PostsRepository _postsRepository;
@@ -44,9 +45,13 @@ class ArticleCommentBloc
       emit(const ArticleCommentState.loading());
 
       await _postsRepository.likeComment(event.commentId);
-      final response = await _postsRepository.getPostComment(event.commentId);
 
-      emit(ArticleCommentState.success('Comment liked', response.data));
+      emit(
+        const ArticleCommentState.success(
+          'Comment liked',
+          null,
+        ),
+      );
     } catch (e) {
       emit(ArticleCommentState.error(e.toString()));
     }
@@ -61,9 +66,37 @@ class ArticleCommentBloc
 
       await _postsRepository.unlikeComment(event.commentId);
 
-      final response = await _postsRepository.getPostComment(event.commentId);
+      emit(
+        const ArticleCommentState.success(
+          'Comment unliked',
+          null,
+        ),
+      );
+    } catch (e) {
+      emit(ArticleCommentState.error(e.toString()));
+    }
+  }
 
-      emit(ArticleCommentState.success('Comment unliked', response.data));
+  FutureOr<void> _onSubscriptionRequested(
+    _SubscriptionRequested event,
+    Emitter<ArticleCommentState> emit,
+  ) async {
+    try {
+      await _postsRepository.watchPostCommentUserLikes(event.commentId).forEach(
+        (realtimeComment) async {
+          try {
+            final response =
+                await _postsRepository.getPostComment(event.commentId);
+            if (response.data == null) return;
+
+            emit(
+              ArticleCommentState.success('', response.data),
+            );
+          } catch (e) {
+            emit(ArticleCommentState.error(e.toString()));
+          }
+        },
+      );
     } catch (e) {
       emit(ArticleCommentState.error(e.toString()));
     }

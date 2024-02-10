@@ -38,7 +38,6 @@ class ArticleCommentsBloc
       final response = await _postsRepository.getPostComments(
         postId: _articleId,
         parentId: _parentId,
-        limit: 1,
       );
       emit(ArticleCommentsState.success(response));
     } catch (e) {

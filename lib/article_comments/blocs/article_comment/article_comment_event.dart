@@ -9,4 +9,7 @@ class ArticleCommentEvent with _$ArticleCommentEvent {
 
   const factory ArticleCommentEvent.commentUnliked(String commentId) =
       _CommentUnliked;
+
+  const factory ArticleCommentEvent.subscriptionRequested(String commentId) =
+      _SubscriptionRequested;
 }
