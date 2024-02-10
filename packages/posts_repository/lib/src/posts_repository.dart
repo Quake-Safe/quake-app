@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:posts_repository/posts_repository.dart';
 import 'package:quake_safe_platform_client/quake_safe_platform_client.dart';
 import 'package:supabase/supabase.dart';
+import 'package:user_like_repository/user_like_repository.dart';
 
 /// {@template posts_repository}
 /// A Very Good Project created by Very Good CLI.
@@ -77,6 +79,46 @@ class PostsRepository {
     /// This is important to prevent memory leaks.
     controller.onCancel = () async {
       await channel.unsubscribe();
+    };
+
+    return controller.stream;
+  }
+
+  /// Returns a stream of [RealtimePostComment] which updates when a comment
+  /// with the given [commentId] is updated. This is useful for real-time
+  /// updates when a comment is updated. For example, when a user likes
+  /// a comment.
+  Stream<RealtimePostComment> watchPostCommentUserLikes(String commentId) {
+    final controller = StreamController<RealtimePostComment>();
+    final userLikesChannel = _supabaseClient
+        .channel('user_likes:$commentId')
+        .onPostgresChanges(
+          event: PostgresChangeEvent.all,
+          table: _userLikesTable,
+          filter: PostgresChangeFilter(
+            type: PostgresChangeFilterType.eq,
+            column: 'commentId',
+            value: commentId,
+          ),
+          callback: (payload) async {
+            final comment = await _supabaseClient
+                .from(_postCommentsTable)
+                .select()
+                .eq('id', commentId)
+                .limit(1)
+                .single()
+                .then(RealtimePostComment.fromJson);
+
+            controller.add(comment);
+          },
+        )
+        .subscribe();
+
+    /// Cancels the subscription when the stream is cancelled.
+    /// This is important to prevent memory leaks.
+    controller.onCancel = () async {
+      log('Cancelling watchPostCommentUserLikes: $commentId');
+      await userLikesChannel.unsubscribe();
     };
 
     return controller.stream;

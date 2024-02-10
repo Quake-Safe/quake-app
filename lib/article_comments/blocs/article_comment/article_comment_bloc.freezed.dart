@@ -22,6 +22,7 @@ mixin _$ArticleCommentEvent {
     required TResult Function(String commentId) commentDeleted,
     required TResult Function(String commentId) commentLiked,
     required TResult Function(String commentId) commentUnliked,
+    required TResult Function(String commentId) subscriptionRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$ArticleCommentEvent {
     TResult? Function(String commentId)? commentDeleted,
     TResult? Function(String commentId)? commentLiked,
     TResult? Function(String commentId)? commentUnliked,
+    TResult? Function(String commentId)? subscriptionRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$ArticleCommentEvent {
     TResult Function(String commentId)? commentDeleted,
     TResult Function(String commentId)? commentLiked,
     TResult Function(String commentId)? commentUnliked,
+    TResult Function(String commentId)? subscriptionRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,8 @@ mixin _$ArticleCommentEvent {
     required TResult Function(_CommentDeleted value) commentDeleted,
     required TResult Function(_CommentLiked value) commentLiked,
     required TResult Function(_CommentUnliked value) commentUnliked,
+    required TResult Function(_SubscriptionRequested value)
+        subscriptionRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +56,7 @@ mixin _$ArticleCommentEvent {
     TResult? Function(_CommentDeleted value)? commentDeleted,
     TResult? Function(_CommentLiked value)? commentLiked,
     TResult? Function(_CommentUnliked value)? commentUnliked,
+    TResult? Function(_SubscriptionRequested value)? subscriptionRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +64,7 @@ mixin _$ArticleCommentEvent {
     TResult Function(_CommentDeleted value)? commentDeleted,
     TResult Function(_CommentLiked value)? commentLiked,
     TResult Function(_CommentUnliked value)? commentUnliked,
+    TResult Function(_SubscriptionRequested value)? subscriptionRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +178,7 @@ class _$CommentDeletedImpl implements _CommentDeleted {
     required TResult Function(String commentId) commentDeleted,
     required TResult Function(String commentId) commentLiked,
     required TResult Function(String commentId) commentUnliked,
+    required TResult Function(String commentId) subscriptionRequested,
   }) {
     return commentDeleted(commentId);
   }
@@ -181,6 +189,7 @@ class _$CommentDeletedImpl implements _CommentDeleted {
     TResult? Function(String commentId)? commentDeleted,
     TResult? Function(String commentId)? commentLiked,
     TResult? Function(String commentId)? commentUnliked,
+    TResult? Function(String commentId)? subscriptionRequested,
   }) {
     return commentDeleted?.call(commentId);
   }
@@ -191,6 +200,7 @@ class _$CommentDeletedImpl implements _CommentDeleted {
     TResult Function(String commentId)? commentDeleted,
     TResult Function(String commentId)? commentLiked,
     TResult Function(String commentId)? commentUnliked,
+    TResult Function(String commentId)? subscriptionRequested,
     required TResult orElse(),
   }) {
     if (commentDeleted != null) {
@@ -205,6 +215,8 @@ class _$CommentDeletedImpl implements _CommentDeleted {
     required TResult Function(_CommentDeleted value) commentDeleted,
     required TResult Function(_CommentLiked value) commentLiked,
     required TResult Function(_CommentUnliked value) commentUnliked,
+    required TResult Function(_SubscriptionRequested value)
+        subscriptionRequested,
   }) {
     return commentDeleted(this);
   }
@@ -215,6 +227,7 @@ class _$CommentDeletedImpl implements _CommentDeleted {
     TResult? Function(_CommentDeleted value)? commentDeleted,
     TResult? Function(_CommentLiked value)? commentLiked,
     TResult? Function(_CommentUnliked value)? commentUnliked,
+    TResult? Function(_SubscriptionRequested value)? subscriptionRequested,
   }) {
     return commentDeleted?.call(this);
   }
@@ -225,6 +238,7 @@ class _$CommentDeletedImpl implements _CommentDeleted {
     TResult Function(_CommentDeleted value)? commentDeleted,
     TResult Function(_CommentLiked value)? commentLiked,
     TResult Function(_CommentUnliked value)? commentUnliked,
+    TResult Function(_SubscriptionRequested value)? subscriptionRequested,
     required TResult orElse(),
   }) {
     if (commentDeleted != null) {
@@ -315,6 +329,7 @@ class _$CommentLikedImpl implements _CommentLiked {
     required TResult Function(String commentId) commentDeleted,
     required TResult Function(String commentId) commentLiked,
     required TResult Function(String commentId) commentUnliked,
+    required TResult Function(String commentId) subscriptionRequested,
   }) {
     return commentLiked(commentId);
   }
@@ -325,6 +340,7 @@ class _$CommentLikedImpl implements _CommentLiked {
     TResult? Function(String commentId)? commentDeleted,
     TResult? Function(String commentId)? commentLiked,
     TResult? Function(String commentId)? commentUnliked,
+    TResult? Function(String commentId)? subscriptionRequested,
   }) {
     return commentLiked?.call(commentId);
   }
@@ -335,6 +351,7 @@ class _$CommentLikedImpl implements _CommentLiked {
     TResult Function(String commentId)? commentDeleted,
     TResult Function(String commentId)? commentLiked,
     TResult Function(String commentId)? commentUnliked,
+    TResult Function(String commentId)? subscriptionRequested,
     required TResult orElse(),
   }) {
     if (commentLiked != null) {
@@ -349,6 +366,8 @@ class _$CommentLikedImpl implements _CommentLiked {
     required TResult Function(_CommentDeleted value) commentDeleted,
     required TResult Function(_CommentLiked value) commentLiked,
     required TResult Function(_CommentUnliked value) commentUnliked,
+    required TResult Function(_SubscriptionRequested value)
+        subscriptionRequested,
   }) {
     return commentLiked(this);
   }
@@ -359,6 +378,7 @@ class _$CommentLikedImpl implements _CommentLiked {
     TResult? Function(_CommentDeleted value)? commentDeleted,
     TResult? Function(_CommentLiked value)? commentLiked,
     TResult? Function(_CommentUnliked value)? commentUnliked,
+    TResult? Function(_SubscriptionRequested value)? subscriptionRequested,
   }) {
     return commentLiked?.call(this);
   }
@@ -369,6 +389,7 @@ class _$CommentLikedImpl implements _CommentLiked {
     TResult Function(_CommentDeleted value)? commentDeleted,
     TResult Function(_CommentLiked value)? commentLiked,
     TResult Function(_CommentUnliked value)? commentUnliked,
+    TResult Function(_SubscriptionRequested value)? subscriptionRequested,
     required TResult orElse(),
   }) {
     if (commentLiked != null) {
@@ -460,6 +481,7 @@ class _$CommentUnlikedImpl implements _CommentUnliked {
     required TResult Function(String commentId) commentDeleted,
     required TResult Function(String commentId) commentLiked,
     required TResult Function(String commentId) commentUnliked,
+    required TResult Function(String commentId) subscriptionRequested,
   }) {
     return commentUnliked(commentId);
   }
@@ -470,6 +492,7 @@ class _$CommentUnlikedImpl implements _CommentUnliked {
     TResult? Function(String commentId)? commentDeleted,
     TResult? Function(String commentId)? commentLiked,
     TResult? Function(String commentId)? commentUnliked,
+    TResult? Function(String commentId)? subscriptionRequested,
   }) {
     return commentUnliked?.call(commentId);
   }
@@ -480,6 +503,7 @@ class _$CommentUnlikedImpl implements _CommentUnliked {
     TResult Function(String commentId)? commentDeleted,
     TResult Function(String commentId)? commentLiked,
     TResult Function(String commentId)? commentUnliked,
+    TResult Function(String commentId)? subscriptionRequested,
     required TResult orElse(),
   }) {
     if (commentUnliked != null) {
@@ -494,6 +518,8 @@ class _$CommentUnlikedImpl implements _CommentUnliked {
     required TResult Function(_CommentDeleted value) commentDeleted,
     required TResult Function(_CommentLiked value) commentLiked,
     required TResult Function(_CommentUnliked value) commentUnliked,
+    required TResult Function(_SubscriptionRequested value)
+        subscriptionRequested,
   }) {
     return commentUnliked(this);
   }
@@ -504,6 +530,7 @@ class _$CommentUnlikedImpl implements _CommentUnliked {
     TResult? Function(_CommentDeleted value)? commentDeleted,
     TResult? Function(_CommentLiked value)? commentLiked,
     TResult? Function(_CommentUnliked value)? commentUnliked,
+    TResult? Function(_SubscriptionRequested value)? subscriptionRequested,
   }) {
     return commentUnliked?.call(this);
   }
@@ -514,6 +541,7 @@ class _$CommentUnlikedImpl implements _CommentUnliked {
     TResult Function(_CommentDeleted value)? commentDeleted,
     TResult Function(_CommentLiked value)? commentLiked,
     TResult Function(_CommentUnliked value)? commentUnliked,
+    TResult Function(_SubscriptionRequested value)? subscriptionRequested,
     required TResult orElse(),
   }) {
     if (commentUnliked != null) {
@@ -532,6 +560,160 @@ abstract class _CommentUnliked implements ArticleCommentEvent {
   @JsonKey(ignore: true)
   _$$CommentUnlikedImplCopyWith<_$CommentUnlikedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SubscriptionRequestedImplCopyWith<$Res>
+    implements $ArticleCommentEventCopyWith<$Res> {
+  factory _$$SubscriptionRequestedImplCopyWith(
+          _$SubscriptionRequestedImpl value,
+          $Res Function(_$SubscriptionRequestedImpl) then) =
+      __$$SubscriptionRequestedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String commentId});
+}
+
+/// @nodoc
+class __$$SubscriptionRequestedImplCopyWithImpl<$Res>
+    extends _$ArticleCommentEventCopyWithImpl<$Res, _$SubscriptionRequestedImpl>
+    implements _$$SubscriptionRequestedImplCopyWith<$Res> {
+  __$$SubscriptionRequestedImplCopyWithImpl(_$SubscriptionRequestedImpl _value,
+      $Res Function(_$SubscriptionRequestedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? commentId = null,
+  }) {
+    return _then(_$SubscriptionRequestedImpl(
+      null == commentId
+          ? _value.commentId
+          : commentId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SubscriptionRequestedImpl implements _SubscriptionRequested {
+  const _$SubscriptionRequestedImpl(this.commentId);
+
+  @override
+  final String commentId;
+
+  @override
+  String toString() {
+    return 'ArticleCommentEvent.subscriptionRequested(commentId: $commentId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubscriptionRequestedImpl &&
+            (identical(other.commentId, commentId) ||
+                other.commentId == commentId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, commentId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubscriptionRequestedImplCopyWith<_$SubscriptionRequestedImpl>
+      get copyWith => __$$SubscriptionRequestedImplCopyWithImpl<
+          _$SubscriptionRequestedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String commentId) commentDeleted,
+    required TResult Function(String commentId) commentLiked,
+    required TResult Function(String commentId) commentUnliked,
+    required TResult Function(String commentId) subscriptionRequested,
+  }) {
+    return subscriptionRequested(commentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String commentId)? commentDeleted,
+    TResult? Function(String commentId)? commentLiked,
+    TResult? Function(String commentId)? commentUnliked,
+    TResult? Function(String commentId)? subscriptionRequested,
+  }) {
+    return subscriptionRequested?.call(commentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String commentId)? commentDeleted,
+    TResult Function(String commentId)? commentLiked,
+    TResult Function(String commentId)? commentUnliked,
+    TResult Function(String commentId)? subscriptionRequested,
+    required TResult orElse(),
+  }) {
+    if (subscriptionRequested != null) {
+      return subscriptionRequested(commentId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CommentDeleted value) commentDeleted,
+    required TResult Function(_CommentLiked value) commentLiked,
+    required TResult Function(_CommentUnliked value) commentUnliked,
+    required TResult Function(_SubscriptionRequested value)
+        subscriptionRequested,
+  }) {
+    return subscriptionRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CommentDeleted value)? commentDeleted,
+    TResult? Function(_CommentLiked value)? commentLiked,
+    TResult? Function(_CommentUnliked value)? commentUnliked,
+    TResult? Function(_SubscriptionRequested value)? subscriptionRequested,
+  }) {
+    return subscriptionRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CommentDeleted value)? commentDeleted,
+    TResult Function(_CommentLiked value)? commentLiked,
+    TResult Function(_CommentUnliked value)? commentUnliked,
+    TResult Function(_SubscriptionRequested value)? subscriptionRequested,
+    required TResult orElse(),
+  }) {
+    if (subscriptionRequested != null) {
+      return subscriptionRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SubscriptionRequested implements ArticleCommentEvent {
+  const factory _SubscriptionRequested(final String commentId) =
+      _$SubscriptionRequestedImpl;
+
+  @override
+  String get commentId;
+  @override
+  @JsonKey(ignore: true)
+  _$$SubscriptionRequestedImplCopyWith<_$SubscriptionRequestedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

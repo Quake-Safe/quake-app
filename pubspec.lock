@@ -1279,6 +1279,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  user_like_repository:
+    dependency: transitive
+    description:
+      path: "packages/user_like_repository"
+      relative: true
+    source: path
+    version: "0.1.0+1"
   user_repository:
     dependency: "direct main"
     description:

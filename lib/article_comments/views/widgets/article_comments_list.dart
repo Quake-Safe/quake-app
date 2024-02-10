@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,59 +60,19 @@ class _ArticleCommentsListState extends State<ArticleCommentsList> {
           itemBuilder: (context, comment, i) {
             final articleCommentBloc = ArticleCommentBloc(
               postsRepository: context.read(),
-            );
+            )..add(
+                ArticleCommentEvent.subscriptionRequested(
+                  comment.id,
+                ),
+              );
 
             return BlocProvider.value(
               value: articleCommentBloc,
-              child: BlocListener<ArticleCommentBloc, ArticleCommentState>(
-                bloc: articleCommentBloc,
-                listener: (context, state) {
-                  state.maybeWhen(
-                    success: (message, comment) {
-                      Navigator.of(context).pop();
-                      ScaffoldMessenger.of(context)
-                        ..hideCurrentSnackBar()
-                        ..showSnackBar(
-                          SnackBar(
-                            content: Text(message),
-                            duration: const Duration(seconds: 2),
-                          ),
-                        );
-                      if (comment == null) return;
-                      context.read<ArticleCommentsBloc>().add(
-                            ArticleCommentsEvent.commentUpdated(comment),
-                          );
-                    },
-                    loading: () {
-                      showDialog<void>(
-                        context: context,
-                        builder: (_) => const Dialog.fullscreen(
-                          backgroundColor: Colors.transparent,
-                          child: Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        ),
-                      );
-                    },
-                    orElse: () {},
-                  );
-                },
-                child: ArticleCommentsListItem(
-                  comment: comment,
-                  onLikePressed: () {
-                    if (comment.hasLiked) {
-                      articleCommentBloc.add(
-                        ArticleCommentEvent.commentUnliked(comment.id),
-                      );
-                      return;
-                    }
-                    articleCommentBloc.add(
-                      ArticleCommentEvent.commentLiked(comment.id),
-                    );
-                  },
-                  // TODO(PaoloTolentino): Enable Reply Functionality
-                  onReplyPressed: () {},
-                ),
+              key: ValueKey(comment.id),
+              child: _ArticleCommentListItem(
+                comment: comment,
+                articleCommentBloc: articleCommentBloc,
+                key: ValueKey(comment.id),
               ),
             );
           },
@@ -123,6 +84,105 @@ class _ArticleCommentsListState extends State<ArticleCommentsList> {
             SizedBox(
           height: 8.sp,
         ),
+      ),
+    );
+  }
+}
+
+class _ArticleCommentListItem extends StatelessWidget {
+  const _ArticleCommentListItem({
+    required this.comment,
+    required this.articleCommentBloc,
+    super.key,
+  });
+  final ArticleCommentBloc articleCommentBloc;
+  final PostComment comment;
+
+  Future<void> _showMessage(BuildContext context, String message) async {
+    if (message.isEmpty) return;
+
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(message),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ArticleCommentBloc, ArticleCommentState>(
+          bloc: articleCommentBloc,
+          key: ValueKey(comment.id),
+          listener: (context, state) {
+            state.maybeWhen(
+              success: (message, _) async {
+                if (message.isEmpty) return;
+
+                Navigator.of(context).pop();
+                if (!context.mounted) {
+                  return;
+                }
+                await _showMessage(context, message);
+              },
+              loading: () {
+                showDialog<void>(
+                  context: context,
+                  builder: (_) => const Dialog.fullscreen(
+                    backgroundColor: Colors.transparent,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                );
+              },
+              orElse: () {},
+            );
+          },
+        ),
+        BlocListener<ArticleCommentBloc, ArticleCommentState>(
+          bloc: articleCommentBloc,
+          key: ValueKey(comment.id),
+          listenWhen: (prev, curr) {
+            return prev.mapOrNull(
+                  success: (prev) => prev.updatedComment,
+                ) !=
+                curr.mapOrNull(
+                  success: (curr) => curr.updatedComment,
+                );
+          },
+          listener: (context, state) {
+            state.maybeWhen(
+              success: (message, comment) {
+                if (comment == null) return;
+                context.read<ArticleCommentsBloc>().add(
+                      ArticleCommentsEvent.commentUpdated(comment),
+                    );
+              },
+              orElse: () {},
+            );
+          },
+        ),
+      ],
+      child: ArticleCommentsListItem(
+        comment: comment,
+        onLikePressed: () {
+          if (comment.hasLiked) {
+            articleCommentBloc.add(
+              ArticleCommentEvent.commentUnliked(comment.id),
+            );
+            return;
+          }
+          articleCommentBloc.add(
+            ArticleCommentEvent.commentLiked(comment.id),
+          );
+        },
+        // TODO(PaoloTolentino): Enable Reply Functionality
+        onReplyPressed: () {},
       ),
     );
   }
